@@ -43,3 +43,10 @@
 #### Administrator User Goals
 
 - As an administrator user, I want to be able to edit and delete recipes that were not created by myself.
+
+### Developer And Business Goals
+
+- Improve my programming skills in the Python language.
+- Write good code that follows the DRY principle.
+- Learn more about MongoDB and document databases.
+- Create an easy-to-use website for those who share an interest in Italian food.
