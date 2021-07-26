@@ -15,6 +15,7 @@
     - [Developer And Business Goals](#developer-and-business-goals)
     - [Design](#design)
     - [Wireframes](#wireframes)
+        - [Logged Out](#logged-out)
 
 ## UX
 
@@ -50,3 +51,18 @@
 - Write good code that follows the DRY principle.
 - Learn more about MongoDB and document databases.
 - Create an easy-to-use website for those who share an interest in Italian food.
+
+### Design
+
+### Wireframes
+
+- These wireframes were created in [Balsamiq](https://balsamiq.com/) and describe what the website is supposed to look like when the user is logged out or logged in.
+
+#### Logged Out
+
+- [Index](wireframes/loggedout/index.pdf)
+- [Register](wireframes/loggedout/register.pdf)
+- [Log In](wireframes/loggedout/login.pdf)
+- [Recipes](wireframes/loggedout/recipes.pdf)
+- [Recipe Details](wireframes/loggedout/recipe-details.pdf)
+
