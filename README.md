@@ -58,7 +58,7 @@
 
 ### Wireframes
 
-- [Index](wireframes/index.pdf)
+- [Home](wireframes/home.pdf)
 - [Register](wireframes/register.pdf)
 - [Log In](wireframes/login.pdf)
 - [Recipes](wireframes/recipes.pdf)
