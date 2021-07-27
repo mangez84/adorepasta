@@ -63,6 +63,6 @@
 - [My Recipes](wireframes/myrecipes.pdf)
 - [My Recipes Add/Edit](wireframes/myrecipes-add-edit.pdf)
 - [My Recipes Delete](wireframes/myrecipes-delete.pdf)
-- [Log Out](wireframes/login.pdf)
+- [Log Out](wireframes/logout.pdf)
 
 
