@@ -15,7 +15,6 @@
     - [Developer And Business Goals](#developer-and-business-goals)
     - [Design](#design)
     - [Wireframes](#wireframes)
-        - [Logged Out](#logged-out)
 
 ## UX
 
@@ -25,9 +24,6 @@
 
 - As a user, I want the opportunity to see all existing recipes.
 - As a user, I want to be able to search for recipes.
-- As a user, I want to see statistics on the number of recipes in the database.
-- As a user, I want to see statistics on the most common ingredient in the database.
-- As a user, I want to see statistics on how many registered users there are.
 
 #### Unregistered User Goals
 
@@ -39,6 +35,9 @@
 - As a registered user, I want to be able to update my own recipes.
 - As a registered user, I want to be able to delete my own recipes.
 - As a registered user, I want a profile page that only shows my own recipes.
+- As a registered user, I want to see statistics on the number of recipes in the database.
+- As a registered user, I want to see statistics on the most common ingredient in the database.
+- As a registered user, I want to see statistics on how many registered users there are.
 - As a registered user, I want to be able to log out.
 
 #### Administrator User Goals
@@ -56,13 +55,14 @@
 
 ### Wireframes
 
-- These wireframes were created in [Balsamiq](https://balsamiq.com/) and describe what the website is supposed to look like when the user is logged out or logged in.
+- [Index](wireframes/index.pdf)
+- [Register](wireframes/register.pdf)
+- [Log In](wireframes/login.pdf)
+- [Recipes](wireframes/recipes.pdf)
+- [Recipe Details](wireframes/recipe-details.pdf)
+- [My Recipes](wireframes/myrecipes.pdf)
+- [My Recipes Add/Edit](wireframes/myrecipes-add-edit.pdf)
+- [My Recipes Delete](wireframes/myrecipes-delete.pdf)
+- [Log Out](wireframes/login.pdf)
 
-#### Logged Out
-
-- [Index](wireframes/loggedout/index.pdf)
-- [Register](wireframes/loggedout/register.pdf)
-- [Log In](wireframes/loggedout/login.pdf)
-- [Recipes](wireframes/loggedout/recipes.pdf)
-- [Recipe Details](wireframes/loggedout/recipe-details.pdf)
 
