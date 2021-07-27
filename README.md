@@ -15,6 +15,9 @@
     - [Developer And Business Goals](#developer-and-business-goals)
     - [Design](#design)
     - [Wireframes](#wireframes)
+2. [Features](#features)
+    - [Existing Features](#existing-features)
+    - [Upcoming Features](#upcoming-features)
 
 ## UX
 
@@ -65,4 +68,21 @@
 - [My Recipes Delete](wireframes/myrecipes-delete.pdf)
 - [Log Out](wireframes/logout.pdf)
 
+## Features
 
+### Existing Features
+
+- Users can view all recipes without being logged in.
+- Users can search for recipes without being logged in.
+- Users can register an account and log in.
+- Links for logging in and out are clearly visible on the website.
+- Registered users have access to a page where their own recipes are displayed.
+- A registered user can add, edit and delete their own recipes.
+- A confirmation from the user is required to delete a recipe.
+- Statistics about the recipes are displayed on the home page when a user is logged in.
+- An administrator user can delete recipes created by other users.
+- The website is easy to use, nice to look at and works well on many device types.
+
+### Upcoming Features
+
+- None at the moment.
