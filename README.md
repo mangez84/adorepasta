@@ -58,15 +58,15 @@
 
 ### Wireframes
 
-- [Home](wireframes/home.pdf)
-- [Register](wireframes/register.pdf)
-- [Log In](wireframes/login.pdf)
-- [Recipes](wireframes/recipes.pdf)
-- [Recipe Details](wireframes/recipe-details.pdf)
-- [My Recipes](wireframes/myrecipes.pdf)
-- [My Recipes Add/Edit](wireframes/myrecipes-add-edit.pdf)
-- [My Recipes Delete](wireframes/myrecipes-delete.pdf)
-- [Log Out](wireframes/logout.pdf)
+- [Home](static/wireframes/home.pdf)
+- [Register](static/wireframes/register.pdf)
+- [Log In](static/wireframes/login.pdf)
+- [Recipes](static/wireframes/recipes.pdf)
+- [Recipe Details](static/wireframes/recipe-details.pdf)
+- [My Recipes](static/wireframes/myrecipes.pdf)
+- [My Recipes Add/Edit](static/wireframes/myrecipes-add-edit.pdf)
+- [My Recipes Delete](static/wireframes/myrecipes-delete.pdf)
+- [Log Out](static/wireframes/logout.pdf)
 
 ## Features
 
