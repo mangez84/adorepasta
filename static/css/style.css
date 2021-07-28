@@ -1,0 +1,16 @@
+/* Create space in the viewport */
+
+html,
+body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+/* Position elements in the body with flexbox */
+
+body {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
+}
