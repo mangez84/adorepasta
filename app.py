@@ -31,8 +31,23 @@ def recipes():
     return render_template("recipes.html")
 
 
-@app.route("/register")
+@app.route("/register", methods=["GET", "POST"])
 def register():
+    if request.method == "POST":
+        register = {
+            "firstname": request.form.get("firstname").lower(),
+            "lastname": request.form.get("lastname").lower(),
+            "email": request.form.get("email").lower(),
+            "password": generate_password_hash(
+                request.form.get("password"), "pbkdf2:sha256", salt_length=16
+            ),
+            "admin": False
+        }
+        mongo.db.users.insert_one(register)
+        flash(f"Thank you, {register['firstname'].capitalize()}!")
+        flash("To log in use your email address and password.")
+        flash("Welcome!")
+        return redirect(url_for("login"))
     return render_template("register.html")
 
 
