@@ -66,6 +66,7 @@ def login():
             "password": request.form.get("password")
         }
         account = mongo.db.users.find_one({"username": login["username"]})
+        error = "The username or password is incorrect. Please try again."
 
         # Check password for existing account
         if account:
@@ -78,6 +79,12 @@ def login():
                 return redirect(
                     url_for("myrecipes", username=session["username"])
                 )
+            else:
+                flash(error)
+                return redirect(url_for("login"))
+        else:
+            flash(error)
+            return redirect(url_for("login"))
 
     return render_template("login.html")
 
