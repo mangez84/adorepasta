@@ -32,23 +32,26 @@ def register():
         register = {
             "firstname": request.form.get("firstname").lower(),
             "lastname": request.form.get("lastname").lower(),
+            "username": request.form.get("username").lower(),
             "email": request.form.get("email").lower(),
             "password": generate_password_hash(
                 request.form.get("password"), "pbkdf2:sha256", salt_length=16
             ),
             "admin": False
         }
-        account = mongo.db.users.find_one({"email": register["email"]})
+        account = mongo.db.users.find_one({"username": register["username"]})
 
         # Ensure that unique accounts are stored in the database
         if account:
-            flash(f"{register['email']} is already a registered account.")
-            flash("Please register with another email address.")
+            flash(
+                f"The username {register['username']} is already registered."
+            )
+            flash("Please register with another username.")
             return redirect(url_for("register"))
 
         mongo.db.users.insert_one(register)
         flash(f"Thank you, {register['firstname'].capitalize()}!")
-        flash("To log in use your email address and password.")
+        flash("Log in with your username and password.")
         flash("Welcome!")
         return redirect(url_for("login"))
 
@@ -59,26 +62,28 @@ def register():
 def login():
     if request.method == "POST":
         login = {
-            "email": request.form.get("email").lower(),
+            "username": request.form.get("username").lower(),
             "password": request.form.get("password")
         }
-        account = mongo.db.users.find_one({"email": login["email"]})
+        account = mongo.db.users.find_one({"username": login["username"]})
 
         # Check password for existing account
         if account:
             if check_password_hash(account["password"], login["password"]):
-                welcome = (
+                session["username"] = login["username"]
+                flash(
                     f"Welcome, {account['firstname'].capitalize()} "
                     f"{account['lastname'].capitalize()}!"
                 )
-                flash(welcome)
-                return redirect(url_for("myrecipes"))
+                return redirect(
+                    url_for("myrecipes", username=session["username"])
+                )
 
     return render_template("login.html")
 
 
-@app.route("/myrecipes")
-def myrecipes():
+@app.route("/myrecipes/<username>")
+def myrecipes(username):
     return render_template("myrecipes.html")
 
 
