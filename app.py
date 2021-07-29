@@ -84,7 +84,14 @@ def login():
 
 @app.route("/myrecipes/<username>")
 def myrecipes(username):
-    return render_template("myrecipes.html")
+    # Check if session cookie is valid otherwise redirect to login
+    try:
+        if username == session["username"]:
+            return render_template("myrecipes.html", username=username)
+    except KeyError:
+        return redirect(url_for("login"))
+    else:
+        return redirect(url_for("login"))
 
 
 @app.route("/recipes")
