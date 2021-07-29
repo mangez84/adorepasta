@@ -43,11 +43,18 @@ def register():
             ),
             "admin": False
         }
+
+        if mongo.db.users.find_one({"email": register["email"]}):
+            flash(f"{register['email']} is already a registered account.")
+            flash("Please register with another email address.")
+            return redirect(url_for("register"))
+
         mongo.db.users.insert_one(register)
         flash(f"Thank you, {register['firstname'].capitalize()}!")
         flash("To log in use your email address and password.")
         flash("Welcome!")
         return redirect(url_for("login"))
+
     return render_template("register.html")
 
 
