@@ -26,6 +26,11 @@ def home():
     return render_template("home.html")
 
 
+@app.route("/recipes")
+def recipes():
+    return render_template("recipes.html")
+
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
@@ -91,19 +96,21 @@ def login():
 
 @app.route("/myrecipes/<username>")
 def myrecipes(username):
-    # Check if session cookie is valid otherwise redirect to login
+    # Check if session cookie is valid otherwise redirect to home
     try:
         if username == session["username"]:
             return render_template("myrecipes.html", username=username)
     except KeyError:
         return redirect(url_for("login"))
     else:
-        return redirect(url_for("login"))
+        return redirect(url_for("home"))
 
 
-@app.route("/recipes")
-def recipes():
-    return render_template("recipes.html")
+@app.route("/logout")
+def logout():
+    flash("You have been logged out successfully!")
+    session.pop("username")
+    return redirect(url_for("login"))
 
 
 if __name__ == "__main__":
