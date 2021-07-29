@@ -44,6 +44,7 @@ def register():
             "admin": False
         }
 
+        # Ensure that unique accounts are stored in the database
         if mongo.db.users.find_one({"email": register["email"]}):
             flash(f"{register['email']} is already a registered account.")
             flash("Please register with another email address.")
