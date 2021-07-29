@@ -53,19 +53,19 @@
                 <div class="col-12 col-md-4 offset-md-4">
                     <!-- Flask flash messages -->
                     {% with messages = get_flashed_messages() %}
-                        {% if messages %}
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col12">
-                                        {% for message in messages %}
-                                            <p class="text-center">
-                                                {{ message }}
-                                            </p>
-                                        {% endfor %}
-                                    </div>
-                                </div>
+                    {% if messages %}
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col12">
+                                {% for message in messages %}
+                                <p class="text-center">
+                                    {{ message }}
+                                </p>
+                                {% endfor %}
                             </div>
-                        {% endif %}
+                        </div>
+                    </div>
+                    {% endif %}
                     {% endwith %}
                     <!-- Main content -->
                     {% block content %}
