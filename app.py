@@ -26,11 +26,6 @@ def home():
     return render_template("home.html")
 
 
-@app.route("/recipes")
-def recipes():
-    return render_template("recipes.html")
-
-
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
@@ -43,9 +38,10 @@ def register():
             ),
             "admin": False
         }
+        account = mongo.db.users.find_one({"email": register["email"]})
 
         # Ensure that unique accounts are stored in the database
-        if mongo.db.users.find_one({"email": register["email"]}):
+        if account:
             flash(f"{register['email']} is already a registered account.")
             flash("Please register with another email address.")
             return redirect(url_for("register"))
@@ -59,9 +55,36 @@ def register():
     return render_template("register.html")
 
 
-@app.route("/login")
+@app.route("/login", methods=["GET", "POST"])
 def login():
+    if request.method == "POST":
+        login = {
+            "email": request.form.get("email").lower(),
+            "password": request.form.get("password")
+        }
+        account = mongo.db.users.find_one({"email": login["email"]})
+
+        # Check password for existing account
+        if account:
+            if check_password_hash(account["password"], login["password"]):
+                welcome = (
+                    f"Welcome, {account['firstname'].capitalize()} "
+                    f"{account['lastname'].capitalize()}!"
+                )
+                flash(welcome)
+                return redirect(url_for("myrecipes"))
+
     return render_template("login.html")
+
+
+@app.route("/myrecipes")
+def myrecipes():
+    return render_template("myrecipes.html")
+
+
+@app.route("/recipes")
+def recipes():
+    return render_template("recipes.html")
 
 
 if __name__ == "__main__":
