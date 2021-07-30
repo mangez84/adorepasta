@@ -82,7 +82,7 @@ def login():
                     f"{account['lastname'].capitalize()}!"
                 )
                 return redirect(
-                    url_for("myrecipes", username=session["username"])
+                    url_for("my_recipes", username=session["username"])
                 )
             else:
                 flash(error)
@@ -94,12 +94,24 @@ def login():
     return render_template("login.html")
 
 
-@app.route("/myrecipes/<username>")
-def myrecipes(username):
+@app.route("/my_recipes/<username>")
+def my_recipes(username):
     # Check if session cookie is valid otherwise redirect to home
     try:
         if username == session["username"]:
-            return render_template("myrecipes.html", username=username)
+            return render_template("my_recipes.html", username=username)
+    except KeyError:
+        return redirect(url_for("login"))
+    else:
+        return redirect(url_for("home"))
+
+
+@app.route("/my_recipes/<username>/add_recipe")
+def add_recipe(username):
+    # Check if session cookie is valid otherwise redirect to home
+    try:
+        if username == session["username"]:
+            return render_template("add_recipe.html", username=username)
     except KeyError:
         return redirect(url_for("login"))
     else:
