@@ -14,3 +14,17 @@ body {
     flex-flow: column wrap;
     justify-content: space-between;
 }
+
+/* Responsive settings for the recipe form */
+
+.recipe-type,
+.recipe-ingredient {
+    flex: 1 1 100%
+}
+
+.recipe-time,
+.recipe-serves,
+.recipe-quantity,
+.recipe-unit {
+    flex: 1 1 5rem
+}
