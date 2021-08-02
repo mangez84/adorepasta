@@ -19,7 +19,8 @@ body {
 
 .recipe-type,
 .recipe-ingredient,
-.remove-ingredient {
+.remove-ingredient,
+.remove-step {
     flex: 1 1 100%
 }
 

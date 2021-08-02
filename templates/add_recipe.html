@@ -65,12 +65,21 @@
                 <div class="my-3 d-flex justify-content-center add-ingredient">
                     <button class="btn btn-success">Add Ingredient <i class="fas fa-plus"></i></button>
                 </div>
-                <div class="mb-3">
-                    <label for="method" class="form-label">Method</label>
-                    <input type="text" id="method" name="method" placeholder="Step 1" class="form-control" required>
+                <!-- Method with steps -->
+                <div class="method">
+                    <div class="mb-3 border border-3">
+                        <div class="mb-3 method-step">
+                            <label for="method-1" class="form-label">Method - Step 1</label>
+                            <input type="text" id="method-1" name="method-1" placeholder="Step 1" class="form-control"
+                                required>
+                        </div>
+                        <div class="mb-3 d-flex justify-content-center remove-step">
+                            <button class="btn btn-danger">Remove Step <i class="fas fa-minus"></i></button>
+                        </div>
+                    </div>
                 </div>
-                <div class="mb-3 d-flex justify-content-center">
-                    <button type="submit" class="btn btn-success">Add Step <i class="fas fa-plus"></i></button>
+                <div class="my-3 d-flex justify-content-center add-step">
+                    <button class="btn btn-success">Add Step <i class="fas fa-plus"></i></button>
                 </div>
                 <div class="mb-3 d-flex justify-content-center">
                     <div>

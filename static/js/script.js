@@ -4,6 +4,7 @@ The attributes for, id and name should be unique
 
 function modifyAttributes() {
     let numIngredients = 0;
+    let numSteps = 0;
     $(".recipe-ingredient label").each(function (index) {
         numIngredients = index + 1;
         $(this).html("Ingredient " + numIngredients).attr("for", "ingredient-" + numIngredients);
@@ -29,6 +30,14 @@ function modifyAttributes() {
         numIngredients = index + 1;
         $(this).attr("id", "unit-" + numIngredients).attr("name", "unit-" + numIngredients);
     });
+    $(".method label").each(function (index) {
+        numSteps = index + 1;
+        $(this).html("Method - Step " + numSteps).attr("for", "method-" + numSteps);
+    });
+    $(".method input").each(function (index) {
+        numSteps = index + 1;
+        $(this).attr("id", "method-" + numSteps).attr("name", "method-" + numSteps).attr("placeholder", "Step" + numSteps);
+    });
 }
 
 /*
@@ -53,6 +62,32 @@ $(document).on("click", ".remove-ingredient > button", function (event) {
     event.preventDefault();
     let numIngredients = $(".ingredient-details").children().length;
     if (numIngredients !== 1) {
+        $(this).parent().parent().remove();
+    }
+    modifyAttributes();
+});
+
+/*
+Function to add a step to the method
+*/
+
+$(".add-step > button").click(function (event) {
+    event.preventDefault();
+    let method = $(".method").children().first().clone();
+    method.find(".method-step input").val("");
+    console.log(method);
+    $(".method").append(method);
+    modifyAttributes();
+});
+
+/*
+Function to remove a step to the method
+*/
+
+$(document).on("click", ".remove-step > button", function (event) {
+    event.preventDefault();
+    let numSteps = $(".method").children().length;
+    if (numSteps !== 1) {
         $(this).parent().parent().remove();
     }
     modifyAttributes();
