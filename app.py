@@ -106,8 +106,42 @@ def my_recipes(username):
         return redirect(url_for("home"))
 
 
-@app.route("/my_recipes/<username>/add_recipe")
+@app.route("/my_recipes/<username>/add_recipe", methods=["GET", "POST"])
 def add_recipe(username):
+    if request.method == "POST":
+        if username == session["username"]:
+            recipe = {
+                "name": request.form.get("name"),
+                "description": request.form.get("description"),
+                "type": request.form.get("type"),
+                "time": request.form.get("time"),
+                "serves": request.form.get("serves")
+            }
+            ingredients = {}
+            method = {}
+            num_ingredients = 0
+            num_steps = 0
+            for key in request.form.to_dict():
+                if key.startswith("ingredient"):
+                    num_ingredients += 1
+                if key.startswith("method"):
+                    num_steps += 1
+            for i in range(1, num_ingredients + 1):
+                ingredient = "ingredient-" + str(i)
+                quantity = "quantity-" + str(i)
+                unit = "unit-" + str(i)
+                ingredients.update({ingredient: {
+                    "name": request.form.get(ingredient),
+                    "quantity": request.form.get(quantity),
+                    "unit": request.form.get(unit)}})
+            for i in range(1, num_steps + 1):
+                step = "method-" + str(i)
+                method.update({step: request.form.get(step)})
+            recipe.update({"ingredients": ingredients})
+            recipe.update({"method": method})
+            mongo.db.recipes.insert_one(recipe)
+            flash("The recipe was successfully created.")
+            return redirect(url_for("my_recipes", username=username))
     # Check if session cookie is valid otherwise redirect to home
     try:
         if username == session["username"]:

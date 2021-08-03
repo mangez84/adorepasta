@@ -83,7 +83,8 @@
                 </div>
                 <div class="mb-3 d-flex justify-content-center">
                     <div>
-                        <button type="submit" class="mx-3 btn btn-danger">Cancel</button>
+                        <a href="{{ url_for('my_recipes', username=session.username) }}"
+                            class="mx-3 btn btn-danger">Cancel</a>
                     </div>
                     <div>
                         <button type="submit" class="mx-3 btn btn-success">Save</button>
