@@ -6,7 +6,9 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
-            <a href="{{ url_for('add_recipe', username=session.username) }}" class="btn btn-success">Add Recipe</a>
+            <div class="d-flex justify-content-center">
+                <a href="{{ url_for('add_recipe', username=session.username) }}" class="btn btn-success">Add Recipe</a>
+            </div>
         </div>
     </div>
 </div>
