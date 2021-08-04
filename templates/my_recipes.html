@@ -10,6 +10,7 @@
                 <a href="{{ url_for('add_recipe', username=session.username) }}" class="btn btn-success">Add Recipe</a>
             </div>
             {% for recipe in recipes %}
+            <!-- The code for the card was copied from https://getbootstrap.com/docs/5.0/components/card/ -->
             <div class="d-flex justify-content-center my-3">
                 <div class="card">
                     <img src="{{ recipe.image }}" class="card-img-top" alt="{{ recipe.name }}">
@@ -34,6 +35,9 @@
                         </ol>
                         <a href="#" class="btn btn-warning">Edit</a>
                         <a href="#" class="btn btn-danger">Delete</a>
+                    </div>
+                    <div class="card-footer">
+                        <p><em>By: {{ userdata.firstname.capitalize() }} {{ userdata.lastname.capitalize() }}</em></p>
                     </div>
                 </div>
             </div>

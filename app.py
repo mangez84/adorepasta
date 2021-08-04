@@ -100,9 +100,10 @@ def my_recipes(username):
     try:
         if username == session["username"]:
             recipes = list(mongo.db.recipes.find())
-            print(recipes)
+            userdata = mongo.db.users.find_one({"username": username})
             return render_template(
-                "my_recipes.html", username=username, recipes=recipes
+                "my_recipes.html", username=username, recipes=recipes,
+                userdata=userdata
             )
     except KeyError:
         return redirect(url_for("login"))
