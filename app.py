@@ -127,11 +127,13 @@ def add_recipe(username):
             method = {}
             num_ingredients = 0
             num_steps = 0
+            # Check how many ingredients and steps there are in the recipe
             for key in request.form.to_dict():
                 if key.startswith("ingredient"):
                     num_ingredients += 1
                 if key.startswith("method"):
                     num_steps += 1
+            # Build a dictionary for ingredients
             for i in range(1, num_ingredients + 1):
                 ingredient = "ingredient-" + str(i)
                 quantity = "quantity-" + str(i)
@@ -140,6 +142,7 @@ def add_recipe(username):
                     "name": request.form.get(ingredient),
                     "quantity": request.form.get(quantity),
                     "unit": request.form.get(unit)}})
+            # Build a dictionary for the steps
             for i in range(1, num_steps + 1):
                 step = "method-" + str(i)
                 method.update({step: request.form.get(step)})
