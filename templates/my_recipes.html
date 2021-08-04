@@ -6,9 +6,38 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
-            <div class="d-flex justify-content-center">
+            <div class="d-flex justify-content-center my-3">
                 <a href="{{ url_for('add_recipe', username=session.username) }}" class="btn btn-success">Add Recipe</a>
             </div>
+            {% for recipe in recipes %}
+            <div class="d-flex justify-content-center my-3">
+                <div class="card">
+                    <img src="{{ recipe.image }}" class="card-img-top" alt="{{ recipe.name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ recipe.name }}</h5>
+                        <p class="card-text">{{ recipe.description }}</p>
+                        <ul>
+                            {% for ingredient in recipe.ingredients.values() %}
+                            <li>
+                                {{ ingredient.quantity }}
+                                {{ ingredient.unit }}
+                                {{ ingredient.name }}
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        <ol>
+                            {% for step in recipe.method.values() %}
+                            <li>
+                                {{ step }}
+                            </li>
+                            {% endfor %}
+                        </ol>
+                        <a href="#" class="btn btn-warning">Edit</a>
+                        <a href="#" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
         </div>
     </div>
 </div>

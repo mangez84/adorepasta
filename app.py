@@ -99,7 +99,11 @@ def my_recipes(username):
     # Check if session cookie is valid otherwise redirect to home
     try:
         if username == session["username"]:
-            return render_template("my_recipes.html", username=username)
+            recipes = list(mongo.db.recipes.find())
+            print(recipes)
+            return render_template(
+                "my_recipes.html", username=username, recipes=recipes
+            )
     except KeyError:
         return redirect(url_for("login"))
     else:
@@ -113,9 +117,11 @@ def add_recipe(username):
             recipe = {
                 "name": request.form.get("name"),
                 "description": request.form.get("description"),
+                "image": request.form.get("image"),
                 "type": request.form.get("type"),
                 "time": request.form.get("time"),
-                "serves": request.form.get("serves")
+                "serves": request.form.get("serves"),
+                "creator": username
             }
             ingredients = {}
             method = {}
@@ -140,7 +146,7 @@ def add_recipe(username):
             recipe.update({"ingredients": ingredients})
             recipe.update({"method": method})
             mongo.db.recipes.insert_one(recipe)
-            flash("The recipe was successfully created.")
+            flash("The recipe was created successfully!")
             return redirect(url_for("my_recipes", username=username))
     # Check if session cookie is valid otherwise redirect to home
     try:
