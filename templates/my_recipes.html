@@ -14,6 +14,11 @@
             <div class="d-flex justify-content-center my-3">
                 <div class="card">
                     <img src="{{ recipe.image }}" class="card-img-top" alt="{{ recipe.name }}">
+                    <div class="card-header d-flex flex-wrap justify-content-between">
+                        <p><em>{{ recipe.type }}</em></p>
+                        <p><em>Time: {{ recipe.time }} Minutes</em></p>
+                        <p><em>Serves: {{ recipe.serves }}</em></p>
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">{{ recipe.name }}</h5>
                         <p class="card-text">{{ recipe.description }}</p>
