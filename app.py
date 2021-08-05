@@ -28,7 +28,15 @@ def home():
 
 @app.route("/recipes")
 def recipes():
-    return render_template("recipes.html")
+    recipes = list(mongo.db.recipes.find())
+    for recipe in recipes:
+        creator = mongo.db.users.find_one({"username": recipe["creator"]})
+        userdata = {
+            "firstname": creator["firstname"],
+            "lastname": creator["lastname"]
+        }
+        recipe.update(userdata)
+    return render_template("recipes.html", recipes=recipes)
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -99,7 +107,7 @@ def my_recipes(username):
     # Check if session cookie is valid otherwise redirect to home
     try:
         if username == session["username"]:
-            recipes = list(mongo.db.recipes.find())
+            recipes = list(mongo.db.recipes.find({"creator": username}))
             userdata = mongo.db.users.find_one({"username": username})
             return render_template(
                 "my_recipes.html", username=username, recipes=recipes,
