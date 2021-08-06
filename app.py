@@ -158,7 +158,7 @@ def add_recipe(username):
             recipe.update({"ingredients": ingredients})
             recipe.update({"method": method})
             mongo.db.recipes.insert_one(recipe)
-            flash("The recipe was created successfully!")
+            flash("The recipe was successfully created!")
             return redirect(url_for("my_recipes", username=username))
     # Check if session cookie is valid otherwise redirect to home
     try:
@@ -174,6 +174,24 @@ def add_recipe(username):
     "/my_recipes/<username>/edit_recipe/<recipe_id>", methods=["GET", "POST"]
 )
 def edit_recipe(username, recipe_id):
+    if request.method == "POST":
+        if username == session["username"]:
+            recipe_update = {
+                "name": request.form.get("name"),
+                "description": request.form.get("description"),
+                "image": request.form.get("image"),
+                "type": request.form.get("type"),
+                "time": request.form.get("time"),
+                "serves": request.form.get("serves"),
+                "creator": username
+            }
+            print(recipe_update)
+            recipe_update.pop("ingredients")
+            print(recipe_update)
+            mongo.db.recipes.update_one(
+                {"_id": ObjectId(recipe_id)}, {"$set": recipe_update}
+            )
+            flash("The recipe was successfully updated!")
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     return render_template(
         "edit_recipe.html", username=username, recipe=recipe
