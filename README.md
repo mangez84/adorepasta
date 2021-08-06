@@ -86,3 +86,9 @@
 ### Upcoming Features
 
 - None at the moment.
+
+## Credits
+
+### Code
+
+- A useful tip about the Jinja loop.index variable was found in this [Stack Overflow](https://stackoverflow.com/questions/7537439/how-to-increment-a-variable-on-a-for-loop-in-jinja-template/7537466#7537466) post.

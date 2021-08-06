@@ -50,9 +50,9 @@
                     {% for key, value in recipe.ingredients.items() %}
                     <div class="mb-3 d-flex flex-wrap border border-3">
                         <div class="mb-3 recipe-ingredient">
-                            <label for="{{ key }}" class="form-label">{{ key.capitalize() | replace('-', ' ') }}</label>
+                            <label for="{{ key }}" class="form-label">Ingredient {{ loop.index }}</label>
                             <input type="text" id="{{ key }}" name="{{ key }}"
-                                placeholder="{{ key.capitalize() | replace('-', ' ') }}" class="form-control"
+                                placeholder="Ingredient {{ loop.index }}" class="form-control"
                                 value="{{ value.name }}" required>
                         </div>
                         <div class="mb-3 recipe-quantity">
