@@ -170,6 +170,16 @@ def add_recipe(username):
         return redirect(url_for("home"))
 
 
+@app.route(
+    "/my_recipes/<username>/edit_recipe/<recipe_id>", methods=["GET", "POST"]
+)
+def edit_recipe(username, recipe_id):
+    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    return render_template(
+        "edit_recipe.html", username=username, recipe=recipe
+    )
+
+
 @app.route("/logout")
 def logout():
     flash("You have been logged out successfully!")

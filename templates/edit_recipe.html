@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% block heading %}
+<h1 class="text-center">Edit Recipe</h1>
+{% endblock %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <form method="POST" action="{{ url_for('edit_recipe', username=session.username, recipe_id=recipe._id) }}">
+                <!-- Recipe name and description -->
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Pasta Bolognese" class="form-control"
+                        required>
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <input type="text" id="description" name="description"
+                        placeholder="Pasta Bolognese is traditional..." class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="image" class="form-label">Image URL</label>
+                    <input type="text" id="image" name="image" placeholder="https://i.imgur.com/image.jpg"
+                        class="form-control" required>
+                </div>
+                <!-- Recipe details -->
+                <div class="d-flex flex-wrap">
+                    <div class="mb-3 recipe-type">
+                        <label for="type" class="form-label">Type</label>
+                        <select id="type" name="type" class="form-select" aria-label="Select recipe type" required>
+                            <option value="Breakfast">Breakfast</option>
+                            <option value="Lunch" selected>Lunch</option>
+                            <option value="Dinner">Dinner</option>
+                        </select>
+                    </div>
+                    <div class="mb-3 recipe-time">
+                        <label for="time" class="form-label">Cook Time</label>
+                        <input type="number" id="time" name="time" placeholder="Minutes" min="1" max="600"
+                            class="form-control" required>
+                    </div>
+                    <div class="mb-3 ms-3 recipe-serves">
+                        <label for="serves" class="form-label">Serves</label>
+                        <input type="number" id="serves" name="serves" placeholder="4" min="1" max="8"
+                            class="form-control" required>
+                    </div>
+                </div>
+                <!-- Ingredient details -->
+                <div class="ingredient-details">
+                    <div class="mb-3 d-flex flex-wrap border border-3">
+                        <div class="mb-3 recipe-ingredient">
+                            <label for="ingredient-1" class="form-label">Ingredient 1</label>
+                            <input type="text" id="ingredient-1" name="ingredient-1" placeholder="Ingredient 1"
+                                class="form-control" required>
+                        </div>
+                        <div class="mb-3 recipe-quantity">
+                            <label for="quantity-1" class="form-label">Quantity</label>
+                            <input type="number" id="quantity-1" name="quantity-1" placeholder="10" min="1" max="1000"
+                                class="form-control" required>
+                        </div>
+                        <div class="mb-3 ms-3 recipe-unit">
+                            <label for="unit-1" class="form-label">Unit</label>
+                            <input type="text" id="unit-1" name="unit-1" placeholder="g, ml, tablespoon"
+                                class="form-control"
+                                title="Can be left blank if you just want to add a tomato for example.">
+                        </div>
+                        <div class="mb-3 d-flex justify-content-center remove-ingredient">
+                            <button class="btn btn-danger">Remove Ingredient <i class="fas fa-minus"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="my-3 d-flex justify-content-center add-ingredient">
+                    <button class="btn btn-success">Add Ingredient <i class="fas fa-plus"></i></button>
+                </div>
+                <!-- Method with steps -->
+                <div class="method">
+                    <div class="mb-3 border border-3">
+                        <div class="mb-3 method-step">
+                            <label for="method-1" class="form-label">Method - Step 1</label>
+                            <input type="text" id="method-1" name="method-1" placeholder="Step 1" class="form-control"
+                                required>
+                        </div>
+                        <div class="mb-3 d-flex justify-content-center remove-step">
+                            <button class="btn btn-danger">Remove Step <i class="fas fa-minus"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="my-3 d-flex justify-content-center add-step">
+                    <button class="btn btn-success">Add Step <i class="fas fa-plus"></i></button>
+                </div>
+                <div class="mb-3 d-flex justify-content-center">
+                    <div>
+                        <a href="{{ url_for('my_recipes', username=session.username) }}"
+                            class="mx-3 btn btn-danger">Cancel</a>
+                    </div>
+                    <div>
+                        <button type="submit" class="mx-3 btn btn-success">Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
