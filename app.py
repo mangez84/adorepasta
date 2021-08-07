@@ -206,10 +206,34 @@ def edit_recipe(username, recipe_id):
             )
             flash("The recipe was successfully updated!")
             return redirect(url_for("my_recipes", username=username))
-    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-    return render_template(
-        "edit_recipe.html", username=username, recipe=recipe
-    )
+    try:
+        if username == session["username"]:
+            recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+            return render_template(
+                "edit_recipe.html", username=username, recipe=recipe
+            )
+    except KeyError:
+        return redirect(url_for("login"))
+    else:
+        return redirect(url_for("home"))
+
+
+@app.route(
+    "/my_recipes/<username>/delete_recipe/<recipe_id>", methods=["GET", "POST"]
+)
+def delete_recipe(username, recipe_id):
+    if request.method == "POST":
+        if username == session["username"]:
+            mongo.db.recipes.delete_one({"_id": ObjectId(recipe_id)})
+            flash("The recipe was successfully deleted!")
+            return redirect(url_for("my_recipes", username=username))
+    try:
+        if username == session["username"]:
+            return redirect(url_for("my_recipes", username=username))
+    except KeyError:
+        return redirect(url_for("login"))
+    else:
+        return redirect(url_for("home"))
 
 
 @app.route("/logout")
