@@ -21,6 +21,39 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
+def get_ingredients(form):
+    ingredients = {}
+    num_ingredients = 0
+    # Check how many ingredients there are in the recipe
+    for key in form.to_dict():
+        if key.startswith("ingredient"):
+            num_ingredients += 1
+    # Build a dictionary for ingredients
+    for i in range(1, num_ingredients + 1):
+        ingredient = "ingredient-" + str(i)
+        quantity = "quantity-" + str(i)
+        unit = "unit-" + str(i)
+        ingredients.update({ingredient: {
+            "name": form.get(ingredient),
+            "quantity": form.get(quantity),
+            "unit": form.get(unit)}})
+    return ingredients
+
+
+def get_method(form):
+    method = {}
+    num_steps = 0
+    # Check how many steps there are in the recipe
+    for key in form.to_dict():
+        if key.startswith("method"):
+            num_steps += 1
+    # Build a dictionary for the steps
+    for i in range(1, num_steps + 1):
+        step = "method-" + str(i)
+        method.update({step: form.get(step)})
+    return method
+
+
 @app.route("/")
 def home():
     return render_template("home.html")
@@ -132,29 +165,8 @@ def add_recipe(username):
                 "serves": request.form.get("serves"),
                 "creator": username
             }
-            ingredients = {}
-            method = {}
-            num_ingredients = 0
-            num_steps = 0
-            # Check how many ingredients and steps there are in the recipe
-            for key in request.form.to_dict():
-                if key.startswith("ingredient"):
-                    num_ingredients += 1
-                if key.startswith("method"):
-                    num_steps += 1
-            # Build a dictionary for ingredients
-            for i in range(1, num_ingredients + 1):
-                ingredient = "ingredient-" + str(i)
-                quantity = "quantity-" + str(i)
-                unit = "unit-" + str(i)
-                ingredients.update({ingredient: {
-                    "name": request.form.get(ingredient),
-                    "quantity": request.form.get(quantity),
-                    "unit": request.form.get(unit)}})
-            # Build a dictionary for the steps
-            for i in range(1, num_steps + 1):
-                step = "method-" + str(i)
-                method.update({step: request.form.get(step)})
+            ingredients = get_ingredients(request.form)
+            method = get_method(request.form)
             recipe.update({"ingredients": ingredients})
             recipe.update({"method": method})
             mongo.db.recipes.insert_one(recipe)
