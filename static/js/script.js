@@ -81,7 +81,7 @@ $(".add-step > button").click(function (event) {
 });
 
 /*
-Function to remove a step to the method
+Function to remove a step from the method
 */
 
 $(document).on("click", ".remove-step > button", function (event) {
@@ -91,4 +91,20 @@ $(document).on("click", ".remove-step > button", function (event) {
         $(this).parent().parent().remove();
     }
     modifyAttributes();
+});
+
+/*
+Function to confirm removal of a recipe
+*/
+
+$("#delete-recipe").click(function (event) {
+    event.preventDefault();
+    let cancelButton = '<button type="button" id="delete-cancel" class="btn btn-warning mx-3 my-1">Cancel</button>';
+    $(this).parent().siblings().remove();
+    $(this).parent().parent().prepend(cancelButton);
+    $("#delete-cancel").click(function () {
+        location.reload();
+    });
+    $(this).html("Confirm").trigger("blur");
+    $(this).unbind("click");
 });
