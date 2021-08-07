@@ -197,13 +197,15 @@ def edit_recipe(username, recipe_id):
                 "serves": request.form.get("serves"),
                 "creator": username
             }
-            print(recipe_update)
-            recipe_update.pop("ingredients")
-            print(recipe_update)
+            ingredients = get_ingredients(request.form)
+            method = get_method(request.form)
+            recipe_update.update({"ingredients": ingredients})
+            recipe_update.update({"method": method})
             mongo.db.recipes.update_one(
                 {"_id": ObjectId(recipe_id)}, {"$set": recipe_update}
             )
             flash("The recipe was successfully updated!")
+            return redirect(url_for("my_recipes", username=username))
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     return render_template(
         "edit_recipe.html", username=username, recipe=recipe
