@@ -75,9 +75,7 @@ def search():
     recipes_db = list(mongo.db.recipes.find(
         {"$text": {"$search": request.form.get("search")}})
     )
-    print(recipes_db)
     recipes = get_creator_details(recipes_db)
-    print(recipes)
     return render_template("recipes.html", recipes=recipes)
 
 

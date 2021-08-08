@@ -47,23 +47,25 @@
                 </div>
                 <!-- Ingredient details -->
                 <div class="ingredient-details">
-                    {% for key, value in recipe.ingredients.items() %}
+                    {% for ingredient in recipe.ingredients.values() %}
                     <div class="mb-3 d-flex flex-wrap border border-3">
                         <div class="mb-3 recipe-ingredient">
-                            <label for="{{ key }}" class="form-label">Ingredient {{ loop.index }}</label>
-                            <input type="text" id="{{ key }}" name="{{ key }}"
+                            <label for="ingredient-{{ loop.index }}" class="form-label">Ingredient
+                                {{ loop.index }}</label>
+                            <input type="text" id="ingredient-{{ loop.index }}" name="ingredient-{{ loop.index }}"
                                 placeholder="Ingredient {{ loop.index }}" class="form-control"
-                                value="{{ value.name }}" required>
+                                value="{{ ingredient.name }}" required>
                         </div>
                         <div class="mb-3 recipe-quantity">
-                            <label for="{{ key }}) }}" class="form-label">Quantity</label>
-                            <input type="number" id="{{ key }}" name="{{ key }}" placeholder="10" min="1" max="1000"
-                                class="form-control" value="{{ value.quantity }}" required>
+                            <label for="quantity-{{ loop.index }}" class="form-label">Quantity</label>
+                            <input type="number" id="quantity-{{ loop.index }}" name="quantity-{{ loop.index }}"
+                                placeholder="10" min="1" max="1000" class="form-control"
+                                value="{{ ingredient.quantity }}" required>
                         </div>
                         <div class="mb-3 ms-3 recipe-unit">
-                            <label for="{{ key }}" class="form-label">Unit</label>
-                            <input type="text" id="{{ key }}" name="{{ key }}" placeholder="g, ml, tablespoon"
-                                class="form-control" value="{{ value.unit }}"
+                            <label for="unit-{{ loop.index }}" class="form-label">Unit</label>
+                            <input type="text" id="unit-{{ loop.index }}" name="unit-{{ loop.index }}"
+                                placeholder="g, ml, tablespoon" class="form-control" value="{{ ingredient.unit }}"
                                 title="Can be left blank if you just want to add a tomato for example.">
                         </div>
                         <div class="mb-3 d-flex justify-content-center remove-ingredient">
@@ -77,12 +79,13 @@
                 </div>
                 <!-- Method with steps -->
                 <div class="method">
-                    {% for key, value in recipe.method.items() %}
+                    {% for step in recipe.method.values() %}
                     <div class="mb-3 border border-3">
                         <div class="mb-3 method-step">
-                            <label for="{{ key }}" class="form-label">Method - Step {{ loop.index }}</label>
-                            <input type="text" id="{{ key }}" name="{{ key }}" placeholder="Step {{ loop.index }}" class="form-control"
-                                value="{{ value }}" required>
+                            <label for="method-{{ loop.index }}" class="form-label">Method - Step
+                                {{ loop.index }}</label>
+                            <input type="text" id="method-{{ loop.index }}" name="method-{{ loop.index }}"
+                                placeholder="Step {{ loop.index }}" class="form-control" value="{{ step }}" required>
                         </div>
                         <div class="mb-3 d-flex justify-content-center remove-step">
                             <button class="btn btn-danger">Remove Step <i class="fas fa-minus"></i></button>
