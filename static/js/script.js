@@ -97,14 +97,14 @@ $(document).on("click", ".remove-step > button", function (event) {
 Function to confirm removal of a recipe
 */
 
-$("#delete-recipe").click(function (event) {
+$("button.delete-recipe").click(function (event) {
     event.preventDefault();
-    let cancelButton = '<button type="button" id="delete-cancel" class="btn btn-warning mx-3 my-1">Cancel</button>';
+    let cancelButton = '<button type="button" class="btn btn-warning delete-cancel mx-3 my-1">Cancel</button>';
     $(this).parent().siblings().remove();
     $(this).parent().parent().prepend(cancelButton);
-    $("#delete-cancel").click(function () {
+    $("button.delete-cancel").click(function () {
         location.reload();
     });
-    $(this).html("Confirm").trigger("blur");
+    $(this).html("Confirm").attr("type", "submit").trigger("blur");
     $(this).unbind("click");
 });
