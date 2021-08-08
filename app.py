@@ -132,6 +132,8 @@ def login():
         if account:
             if check_password_hash(account["password"], login["password"]):
                 session["username"] = login["username"]
+                if bool(account.get("admin")):
+                    session["admin"] = True
                 flash(
                     f"Welcome, {account['firstname'].capitalize()} "
                     f"{account['lastname'].capitalize()}!"
@@ -245,8 +247,13 @@ def delete_recipe(username, recipe_id):
 
 @app.route("/logout")
 def logout():
-    flash("You have been logged out successfully!")
     session.pop("username")
+    try:
+        session.pop("admin")
+    except KeyError:
+        flash("You have been logged out successfully!")
+        return redirect(url_for("login"))
+    flash("You have been logged out successfully!")
     return redirect(url_for("login"))
 
 
