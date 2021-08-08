@@ -9,7 +9,7 @@
             {% for recipe in recipes %}
             <!-- The code for the card was copied from https://getbootstrap.com/docs/5.0/components/card/ -->
             <div class="d-flex justify-content-center my-3">
-                <div class="card">
+                <div class="card flex-md-fill">
                     <img src="{{ recipe.image }}" class="card-img-top" alt="{{ recipe.name }}">
                     <div class="card-header d-flex flex-wrap justify-content-between">
                         <p><em>{{ recipe.type }}</em></p>
