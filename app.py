@@ -21,6 +21,17 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
+def get_creator_details(recipes):
+    for recipe in recipes:
+        creator = mongo.db.users.find_one({"username": recipe["creator"]})
+        userdata = {
+            "firstname": creator["firstname"],
+            "lastname": creator["lastname"]
+        }
+        recipe.update(userdata)
+    return recipes
+
+
 def get_ingredients(form):
     ingredients = {}
     num_ingredients = 0
@@ -59,16 +70,21 @@ def home():
     return render_template("home.html")
 
 
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    recipes_db = list(mongo.db.recipes.find(
+        {"$text": {"$search": request.form.get("search")}})
+    )
+    print(recipes_db)
+    recipes = get_creator_details(recipes_db)
+    print(recipes)
+    return render_template("recipes.html", recipes=recipes)
+
+
 @app.route("/recipes")
 def recipes():
-    recipes = list(mongo.db.recipes.find())
-    for recipe in recipes:
-        creator = mongo.db.users.find_one({"username": recipe["creator"]})
-        userdata = {
-            "firstname": creator["firstname"],
-            "lastname": creator["lastname"]
-        }
-        recipe.update(userdata)
+    recipes_db = list(mongo.db.recipes.find())
+    recipes = get_creator_details(recipes_db)
     return render_template("recipes.html", recipes=recipes)
 
 
@@ -123,7 +139,7 @@ def login():
                     f"{account['lastname'].capitalize()}!"
                 )
                 return redirect(
-                    url_for("my_recipes", username=session["username"])
+                    url_for("home")
                 )
             else:
                 flash(error)
