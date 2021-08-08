@@ -17,21 +17,21 @@
                         <p><em>Serves: {{ recipe.serves }}</em></p>
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">{{ recipe.name }}</h5>
-                        <p class="card-text">{{ recipe.description }}</p>
+                        <h5 class="card-title">{{ recipe.name | title }}</h5>
+                        <p class="card-text">{{ recipe.description | capitalize }}</p>
                         <ul>
                             {% for ingredient in recipe.ingredients.values() %}
                             <li>
                                 {{ ingredient.quantity }}
-                                {{ ingredient.unit }}
-                                {{ ingredient.name }}
+                                {{ ingredient.unit | lower }}
+                                {{ ingredient.name | lower }}
                             </li>
                             {% endfor %}
                         </ul>
                         <ol>
                             {% for step in recipe.method.values() %}
                             <li>
-                                {{ step }}
+                                {{ step | capitalize }}
                             </li>
                             {% endfor %}
                         </ol>

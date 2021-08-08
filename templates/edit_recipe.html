@@ -41,7 +41,7 @@
                     </div>
                     <div class="mb-3 ms-3 recipe-serves">
                         <label for="serves" class="form-label">Serves</label>
-                        <input type="number" id="serves" name="serves" placeholder="4" min="1" max="8"
+                        <input type="number" id="serves" name="serves" placeholder="4" min="1" max="100"
                             class="form-control" value="{{ recipe.serves }}" required>
                     </div>
                 </div>
@@ -59,13 +59,13 @@
                         <div class="mb-3 recipe-quantity">
                             <label for="quantity-{{ loop.index }}" class="form-label">Quantity</label>
                             <input type="number" id="quantity-{{ loop.index }}" name="quantity-{{ loop.index }}"
-                                placeholder="10" min="1" max="1000" class="form-control"
+                                placeholder="10" min="1" max="10000" class="form-control"
                                 value="{{ ingredient.quantity }}" required>
                         </div>
                         <div class="mb-3 ms-3 recipe-unit">
                             <label for="unit-{{ loop.index }}" class="form-label">Unit</label>
                             <input type="text" id="unit-{{ loop.index }}" name="unit-{{ loop.index }}"
-                                placeholder="g, ml, tablespoon" class="form-control" value="{{ ingredient.unit }}"
+                                placeholder="g, ml, tablespoons" class="form-control" value="{{ ingredient.unit }}"
                                 title="Can be left blank if you just want to add a tomato for example.">
                         </div>
                         <div class="mb-3 d-flex justify-content-center remove-ingredient">
