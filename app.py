@@ -156,6 +156,14 @@ def my_recipes(username):
         if username == session["username"]:
             recipes_db = list(mongo.db.recipes.find({"creator": username}))
             recipes = get_creator_details(recipes_db)
+            try:
+                if session["admin"]:
+                    recipes_db = list(mongo.db.recipes.find(
+                        {"creator": {"$ne": username}})
+                    )
+                    recipes.extend(get_creator_details(recipes_db))
+            except KeyError:
+                pass
             return render_template(
                 "my_recipes.html", username=username, recipes=recipes
             )
