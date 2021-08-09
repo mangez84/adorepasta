@@ -149,108 +149,96 @@ def login():
     return render_template("login.html")
 
 
-@app.route("/my_recipes/<username>")
-def my_recipes(username):
-    # Check if session cookie is valid otherwise redirect to home
+@app.route("/my_recipes")
+def my_recipes():
     try:
-        if username == session["username"]:
-            recipes_db = list(mongo.db.recipes.find({"creator": username}))
-            recipes = get_creator_details(recipes_db)
-            try:
-                if session["admin"]:
-                    recipes_db = list(mongo.db.recipes.find(
-                        {"creator": {"$ne": username}})
-                    )
-                    recipes.extend(get_creator_details(recipes_db))
-            except KeyError:
-                pass
-            return render_template(
-                "my_recipes.html", username=username, recipes=recipes
-            )
-    except KeyError:
-        return redirect(url_for("login"))
-    else:
-        return redirect(url_for("home"))
-
-
-@app.route("/my_recipes/<username>/add_recipe", methods=["GET", "POST"])
-def add_recipe(username):
-    if request.method == "POST":
-        recipe = {
-            "name": request.form.get("name"),
-            "description": request.form.get("description"),
-            "image": request.form.get("image"),
-            "type": request.form.get("type"),
-            "time": request.form.get("time"),
-            "serves": request.form.get("serves"),
-            "creator": username
-        }
-        ingredients = get_ingredients(request.form)
-        method = get_method(request.form)
-        recipe.update({"ingredients": ingredients})
-        recipe.update({"method": method})
-        mongo.db.recipes.insert_one(recipe)
-        flash("The recipe was successfully created!")
-        return redirect(url_for("my_recipes", username=username))
-    # Check if session cookie is valid otherwise redirect to home
-    try:
-        if username == session["username"]:
-            return render_template("add_recipe.html", username=username)
-    except KeyError:
-        return redirect(url_for("login"))
-    else:
-        return redirect(url_for("home"))
-
-
-@app.route(
-    "/my_recipes/<username>/edit_recipe/<recipe_id>", methods=["GET", "POST"]
-)
-def edit_recipe(username, recipe_id):
-    if request.method == "POST":
-        recipe_update = {
-            "name": request.form.get("name"),
-            "description": request.form.get("description"),
-            "image": request.form.get("image"),
-            "type": request.form.get("type"),
-            "time": request.form.get("time"),
-            "serves": request.form.get("serves")
-        }
-        ingredients = get_ingredients(request.form)
-        method = get_method(request.form)
-        recipe_update.update({"ingredients": ingredients})
-        recipe_update.update({"method": method})
-        mongo.db.recipes.update_one(
-            {"_id": ObjectId(recipe_id)}, {"$set": recipe_update}
+        recipes = get_creator_details(
+            list(mongo.db.recipes.find({"creator": session["username"]}))
         )
-        flash("The recipe was successfully updated!")
-        return redirect(url_for("my_recipes", username=username))
-    try:
-        if username == session["username"]:
-            recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-            return render_template(
-                "edit_recipe.html", username=username, recipe=recipe
-            )
+        return render_template("my_recipes.html", recipes=recipes)
     except KeyError:
         return redirect(url_for("login"))
-    else:
-        return redirect(url_for("home"))
 
 
-@app.route(
-    "/my_recipes/<username>/delete_recipe/<recipe_id>", methods=["GET", "POST"]
-)
-def delete_recipe(username, recipe_id):
+@app.route("/add_recipe", methods=["GET", "POST"])
+def add_recipe():
     if request.method == "POST":
-        mongo.db.recipes.delete_one({"_id": ObjectId(recipe_id)})
-        flash("The recipe was successfully deleted!")
-        return redirect(url_for("my_recipes", username=username))
+        try:
+            if session["username"]:
+                recipe = {
+                    "name": request.form.get("name"),
+                    "description": request.form.get("description"),
+                    "image": request.form.get("image"),
+                    "type": request.form.get("type"),
+                    "time": request.form.get("time"),
+                    "serves": request.form.get("serves"),
+                    "creator": session["username"]
+                }
+                ingredients = get_ingredients(request.form)
+                method = get_method(request.form)
+                recipe.update({"ingredients": ingredients})
+                recipe.update({"method": method})
+                mongo.db.recipes.insert_one(recipe)
+                flash("The recipe was successfully created!")
+                return redirect(url_for("my_recipes"))
+        except KeyError:
+            return redirect(url_for("login"))
+    # Check if session cookie is valid otherwise redirect to login
     try:
-        if username == session["username"]:
-            return redirect(url_for("my_recipes", username=username))
+        if session["username"]:
+            return render_template("add_recipe.html")
     except KeyError:
         return redirect(url_for("login"))
-    else:
-        return redirect(url_for("home"))
+
+
+@app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
+def edit_recipe(recipe_id):
+    if request.method == "POST":
+        try:
+            if session["username"]:
+                recipe_update = {
+                    "name": request.form.get("name"),
+                    "description": request.form.get("description"),
+                    "image": request.form.get("image"),
+                    "type": request.form.get("type"),
+                    "time": request.form.get("time"),
+                    "serves": request.form.get("serves")
+                }
+                ingredients = get_ingredients(request.form)
+                method = get_method(request.form)
+                recipe_update.update({"ingredients": ingredients})
+                recipe_update.update({"method": method})
+                mongo.db.recipes.update_one(
+                    {"_id": ObjectId(recipe_id)}, {"$set": recipe_update}
+                )
+                flash("The recipe was successfully updated!")
+                return redirect(url_for("my_recipes"))
+        except KeyError:
+            return redirect(url_for("login"))
+    try:
+        recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+        return render_template("edit_recipe.html", recipe=recipe)
+    except KeyError:
+        return redirect(url_for("login"))
+
+
+@app.route("/delete_recipe/<recipe_id>", methods=["GET", "POST"])
+def delete_recipe(recipe_id):
+    if request.method == "POST":
+        try:
+            if session["username"]:
+                mongo.db.recipes.delete_one({"_id": ObjectId(recipe_id)})
+                flash("The recipe was successfully deleted!")
+                return redirect(url_for("my_recipes"))
+        except KeyError:
+            return redirect(url_for("login"))
+    try:
+        if session["username"]:
+            flash("Error: The recipe was not deleted!")
+            flash("Please use the delete button!")
+            return redirect(url_for("my_recipes"))
+    except KeyError:
+        return redirect(url_for("login"))
 
 
 @app.route("/logout")

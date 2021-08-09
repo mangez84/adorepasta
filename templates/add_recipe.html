@@ -6,7 +6,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
-            <form method="POST" action="{{ url_for('add_recipe', username=session.username) }}">
+            <form method="POST" action="{{ url_for('add_recipe') }}">
                 <!-- Recipe name and description -->
                 <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
@@ -89,7 +89,7 @@
                 </div>
                 <div class="mb-3 d-flex justify-content-center">
                     <div>
-                        <a href="{{ url_for('my_recipes', username=session.username) }}"
+                        <a href="{{ url_for('my_recipes') }}"
                             class="mx-3 btn btn-danger">Cancel</a>
                     </div>
                     <div>
