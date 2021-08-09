@@ -1,4 +1,5 @@
 import os
+import random
 from flask import (
     Flask, flash, render_template, redirect,
     request, session, url_for
@@ -67,22 +68,23 @@ def get_method(form):
 
 @app.route("/")
 def home():
-    return render_template("home.html")
+    recipes = get_creator_details(list(mongo.db.recipes.find()))
+    recipe = random.choice(list(recipes))
+    return render_template("home.html", recipe=recipe)
 
 
 @app.route("/search", methods=["GET", "POST"])
 def search():
-    recipes_db = list(mongo.db.recipes.find(
-        {"$text": {"$search": request.form.get("search")}})
+    recipes = get_creator_details(
+        list(mongo.db.recipes.find(
+            {"$text": {"$search": request.form.get("search")}}))
     )
-    recipes = get_creator_details(recipes_db)
     return render_template("recipes.html", recipes=recipes)
 
 
 @app.route("/recipes")
 def recipes():
-    recipes_db = list(mongo.db.recipes.find())
-    recipes = get_creator_details(recipes_db)
+    recipes = get_creator_details(list(mongo.db.recipes.find()))
     return render_template("recipes.html", recipes=recipes)
 
 
