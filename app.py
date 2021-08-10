@@ -69,7 +69,10 @@ def get_method(form):
 @app.route("/")
 def home():
     recipes = get_creator_details(list(mongo.db.recipes.find()))
-    recipe = random.choice(list(recipes))
+    if len(recipes) > 1:
+        recipe = random.choice(list(recipes))
+    else:
+        recipe = None
     return render_template("home.html", recipe=recipe)
 
 
