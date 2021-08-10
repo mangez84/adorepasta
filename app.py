@@ -115,7 +115,7 @@ def register():
             return redirect(url_for("register"))
 
         mongo.db.users.insert_one(register)
-        flash(f"Thank you, {register['firstname'].capitalize()}!")
+        flash(f"Thank you, {register['firstname'].title()}!")
         flash("Log in with your username and password.")
         flash("Welcome!")
         return redirect(url_for("login"))

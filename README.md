@@ -91,4 +91,5 @@
 
 ### Code
 
+- The registration and login functionality is highly inspired by the Flask mini project developed by Tim Nelson at [Code Institute](https://codeinstitute.net/).
 - A useful tip about the Jinja loop.index variable was found in this [Stack Overflow](https://stackoverflow.com/questions/7537439/how-to-increment-a-variable-on-a-for-loop-in-jinja-template/7537466#7537466) post.

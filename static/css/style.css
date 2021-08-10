@@ -19,7 +19,7 @@ body {
 
 .login-form > form,
 .register-form > form {
-    flex: 0 1 20rem;
+    flex: 0 1 25rem;
 }
 
 /* Responsive settings for the recipe form */
