@@ -18,6 +18,13 @@
 2. [Features](#features)
     - [Existing Features](#existing-features)
     - [Upcoming Features](#upcoming-features)
+3. [Technologies Used](#technologies-used)
+    - [Languages Used](#languages-used)
+4. [Credits](#credits)
+    - [Code](#code)
+    - [Content](#content)
+    - [Media](#media)
+        - [Images](#images)
 
 ## UX
 
@@ -87,9 +94,35 @@
 
 - None at the moment.
 
+## Technologies Used
+
+### Languages Used
+
+- [HTML5](https://en.wikipedia.org/wiki/HTML5)
+- [CSS3](https://en.wikipedia.org/wiki/CSS)
+- [JavaScript](https://en.wikipedia.org/wiki/JavaScript)
+- [Python](https://en.wikipedia.org/wiki/Python_(programming_language))
+
 ## Credits
 
 ### Code
 
 - The registration and login functionality is highly inspired by the Flask mini project developed by Tim Nelson at [Code Institute](https://codeinstitute.net/).
 - A useful tip about the Jinja loop.index variable was found in this [Stack Overflow](https://stackoverflow.com/questions/7537439/how-to-increment-a-variable-on-a-for-loop-in-jinja-template/7537466#7537466) post.
+
+### Content
+
+- The description for the spaghetti bolognese recipe was copied from [from Wikipedia](https://en.wikipedia.org/wiki/Bolognese_sauce).
+- The description for the spaghetti carbonara recipe was copied from [from Wikipedia](https://en.wikipedia.org/wiki/Carbonara).
+- The recipes are otherwise created by the developer himself.
+
+### Media
+
+#### Images
+
+- The image for the spaghetti bolognese recipe was obtained from [RitaE on Pixabay](https://pixabay.com/photos/spaghetti-noodles-bolognese-1987454/).
+- The image for the spaghetti carbonara recipe was obtained from [Hans Braxmeier on Pixabay](https://pixabay.com/photos/spaghetti-spaghetti-carbonara-7113/).
+- The image for the spaghetti with shrimps recipe was obtained from [RitaE on Pixabay](https://pixabay.com/photos/pasta-italian-cuisine-dish-3547078/).
+- The image for the farfalle with pesto recipe was obtained from [Pexels on Pixabay](https://pixabay.com/photos/pasta-pesto-farfalle-pesto-pasta-1854245/).
+- The image for the spaghetti with tomato sauce recipe was obtained from [RitaE on Pixabay](https://pixabay.com/photos/spaghetti-tomatoes-tomato-sauce-1392266/).
+- The image for the lasagna recipe was obtained from [RitaE on Pixabay](https://pixabay.com/photos/lasagna-cheese-tomatoes-noodles-1900529/).

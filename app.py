@@ -140,8 +140,8 @@ def login():
                 if bool(account.get("admin")):
                     session["admin"] = True
                 flash(
-                    f"Welcome, {account['firstname'].capitalize()} "
-                    f"{account['lastname'].capitalize()}!"
+                    f"Welcome, {account['firstname'].title()} "
+                    f"{account['lastname'].title()}!"
                 )
                 return redirect(url_for("home"))
             else:

@@ -17,8 +17,9 @@
                         <p><em>Serves: {{ recipe.serves }}</em></p>
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">{{ recipe.name | title }}</h5>
-                        <p class="card-text">{{ recipe.description | capitalize }}</p>
+                        <h2 class="card-title">{{ recipe.name | title }}</h2>
+                        <p class="card-text">{{ recipe.description }}</p>
+                        <h3>Ingredients</h3>
                         <ul>
                             {% for ingredient in recipe.ingredients.values() %}
                             <li>
@@ -28,6 +29,7 @@
                             </li>
                             {% endfor %}
                         </ul>
+                        <h3>Method</h3>
                         <ol>
                             {% for step in recipe.method.values() %}
                             <li>
