@@ -28,8 +28,11 @@
                 <div class="d-flex flex-wrap">
                     <div class="mb-3 recipe-type">
                         <label for="type" class="form-label">Type</label>
-                        <input type="text" id="type" name="type" placeholder="Lunch, Dinner..."
-                        class="form-control" value="{{ recipe.type }}" required>
+                        <select id="type" name="type" class="form-select" aria-label="Select recipe type" required>
+                            <option value="Breakfast">Breakfast</option>
+                            <option value="Lunch" selected>Lunch</option>
+                            <option value="Dinner">Dinner</option>
+                        </select>
                     </div>
                     <div class="mb-3 recipe-time">
                         <label for="time" class="form-label">Cook Time</label>

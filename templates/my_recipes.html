@@ -15,7 +15,7 @@
                 <div class="card flex-md-fill">
                     <img src="{{ recipe.image }}" class="card-img-top" alt="{{ recipe.name }}">
                     <div class="card-header d-flex flex-wrap justify-content-between">
-                        <p><em>{{ recipe.type | capitalize }}</em></p>
+                        <p><em>{{ recipe.type }}</em></p>
                         <p><em>Time: {{ recipe.time }} Minutes</em></p>
                         <p><em>Serves: {{ recipe.serves }}</em></p>
                     </div>
@@ -43,7 +43,7 @@
                                 class="btn btn-warning mx-3 my-1">Edit</a>
                             <form method="POST" class="mx-3 my-1"
                                 action="{{ url_for('delete_recipe', recipe_id=recipe._id) }}">
-                                <button type="button" class="btn btn-danger delete-recipe">Delete</a>
+                                <button type="button" class="btn btn-danger">Delete</a>
                             </form>
                         </div>
                     </div>

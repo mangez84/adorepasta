@@ -33,19 +33,14 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-12 my-3">
-            {% if recipe %}
             <h2 class="text-center">Try this amazing recipe!</h2>
-            {% else %}
-            <h2 class="text-center">No recipes yet! Start sharing!</h2>
-            {% endif %}
         </div>
-        {% if recipe %}
         <!-- The code for the card was copied from https://getbootstrap.com/docs/5.0/components/card/ -->
         <div class="d-flex justify-content-center my-3">
             <div class="card flex-md-fill">
                 <img src="{{ recipe.image }}" class="card-img-top" alt="{{ recipe.name }}">
                 <div class="card-header d-flex flex-wrap justify-content-between">
-                    <p><em>{{ recipe.type | capitalize }}</em></p>
+                    <p><em>{{ recipe.type }}</em></p>
                     <p><em>Time: {{ recipe.time }} Minutes</em></p>
                     <p><em>Serves: {{ recipe.serves }}</em></p>
                 </div>
@@ -74,7 +69,6 @@
                 </div>
             </div>
         </div>
-        {% endif %}
     </div>
 </div>
 {% endblock %}
