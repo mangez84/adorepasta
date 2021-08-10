@@ -15,6 +15,13 @@ body {
     justify-content: space-between;
 }
 
+/* Responsive settings for the login and register form */
+
+.login-form > form,
+.register-form > form {
+    flex: 0 1 20rem;
+}
+
 /* Responsive settings for the recipe form */
 
 .recipe-type,
