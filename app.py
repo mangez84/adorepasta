@@ -199,8 +199,9 @@ def add_recipe():
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
     if request.method == "POST":
+        recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
         try:
-            if session["username"]:
+            if session["username"] == recipe["creator"] or session["admin"]:
                 recipe_update = {
                     "name": request.form.get("name"),
                     "description": request.form.get("description"),
@@ -216,8 +217,18 @@ def edit_recipe(recipe_id):
                 mongo.db.recipes.update_one(
                     {"_id": ObjectId(recipe_id)}, {"$set": recipe_update}
                 )
-                flash("The recipe was successfully updated!")
-                return redirect(url_for("my_recipes"))
+                if session["username"] != recipe["creator"]:
+                    flash("The recipe was successfully updated!")
+                    return redirect(url_for("recipes"))
+                else:
+                    flash("The recipe was successfully updated!")
+                    return redirect(url_for("my_recipes"))
+            else:
+                flash("Error: The recipe was not edited!")
+                flash(
+                    "You can only edit recipes that you have created yourself!"
+                )
+                return redirect(url_for("home"))
         except KeyError:
             return redirect(url_for("login"))
     try:
@@ -231,9 +242,21 @@ def edit_recipe(recipe_id):
 def delete_recipe(recipe_id):
     if request.method == "POST":
         try:
-            if session["username"]:
-                mongo.db.recipes.delete_one({"_id": ObjectId(recipe_id)})
-                flash("The recipe was successfully deleted!")
+            recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+            if session["username"] == recipe["creator"] or session["admin"]:
+                mongo.db.recipes.delete_one(recipe)
+                if session["username"] != recipe["creator"]:
+                    flash("The recipe was successfully deleted!")
+                    return redirect(url_for("recipes"))
+                else:
+                    flash("The recipe was successfully deleted!")
+                    return redirect(url_for("my_recipes"))
+            else:
+                flash("Error: The recipe was not deleted!")
+                flash(
+                    "You can only delete recipes "
+                    "that you have created yourself!"
+                )
                 return redirect(url_for("my_recipes"))
         except KeyError:
             return redirect(url_for("login"))

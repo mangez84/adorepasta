@@ -125,7 +125,7 @@
             "$oid": "***"
         },
         "name": "Spaghetti Bolognese",
-        "description": "Bolognese sauce is a meat-based sauce in Italian cuisine, typical of the city of Bologna.",
+        "description": "Bolognese sauce is a meat-based sauce in Italian cuisine.",
         "image": "https://i.imgur.com/image.jpg",
         "type": "Dinner",
         "time": "30",
