@@ -28,8 +28,13 @@
                         <label for="password" class="form-label">Password</label>
                         <input type="password" id="password" name="password" class="form-control" required>
                     </div>
-                    <div class="d-flex justify-content-center">
-                        <button type="submit" class="btn btn-primary">Register</button>
+                    <div class="d-flex flex-wrap justify-content-center">
+                        <div>
+                            <a href="{{ url_for('home') }}" class="mx-3 my-3 btn btn-danger">Cancel</a>
+                        </div>
+                        <div>
+                            <button type="submit" class="mx-3 my-3 btn btn-success">Register</button>
+                        </div>
                     </div>
                 </form>
             </div>
