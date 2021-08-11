@@ -109,61 +109,63 @@
 ## Data Model
 
 - The website uses a [MongoDB](https://www.mongodb.com/) document database with two collections to store recipes and registered users.
-- The username field in the users collection is stored in a session cookie after a successful login. When a recipe is added, the username is stored in the creator field in the recipes collection.
+- The `username` field from the `users` collection is stored in a session cookie after a successful login. When a recipe is added, the `username` is stored in the `creator` field in the `recipes` collection.
+- Users who have the `admin` field set to true have the right to edit and delete all recipes on the site.
+- The value from the `creator` field is used in a function that queries the users collection to get user details.
+- The `ingredient` field contains an object for each ingredient added by the user.
+- The `method` field contains an item for each step required to prepare the recipe.
 
 ### Collections
 
 - adorePastaDB.recipes
 
-```json
-{
-    "_id": {
-        "$oid": "***"
-    },
-    "name": "Spaghetti Bolognese",
-    "description": "Bolognese sauce is a meat-based sauce in Italian cuisine, typical of the city of Bologna.",
-    "image": "https://i.imgur.com/image.jpg",
-    "type": "Dinner",
-    "time": "30",
-    "serves": "4",
-    "creator": "foody",
-    "ingredients": {
-        "ingredient-1": {
-            "name": "Spaghetti",
-            "quantity": "500",
-            "unit": "g"
+    ```json
+    {
+        "_id": {
+            "$oid": "***"
         },
-        "ingredient-2": {
-            "name": "Onions",
-            "quantity": "2",
-            "unit": ""
+        "name": "Spaghetti Bolognese",
+        "description": "Bolognese sauce is a meat-based sauce in Italian cuisine, typical of the city of Bologna.",
+        "image": "https://i.imgur.com/image.jpg",
+        "type": "Dinner",
+        "time": "30",
+        "serves": "4",
+        "creator": "foody",
+        "ingredients": {
+            "ingredient-1": {
+                "name": "Spaghetti",
+                "quantity": "500",
+                "unit": "g"
+            },
+            "ingredient-2": {
+                "name": "Onions",
+                "quantity": "2",
+                "unit": ""
+            }
+        },
+        "method": {
+            "method-1": "Boil water.",
+            "method-2": "Cook pasta.",
+            "method-3": "Slice onions."
         }
-        ...
-    },
-    "method": {
-        "method-1": "Boil water.",
-        "method-2": "Cook pasta.",
-        "method-3": "Slice onions."
-        ...
     }
-}
-```
+    ```
 
 - adorePastaDB.users
 
-```json
-{
-    "_id": {
-        "$oid": "***"
-    },
-    "firstname": "foody",
-    "lastname": "harrelson",
-    "username": "foody",
-    "email": "foody@adorepasta.com",
-    "password": "***",
-    "admin": false
-}
-```
+    ```json
+    {
+        "_id": {
+            "$oid": "***"
+        },
+        "firstname": "foody",
+        "lastname": "harrelson",
+        "username": "foody",
+        "email": "foody@adorepasta.com",
+        "password": "***",
+        "admin": false
+    }
+    ```
 
 ### Indexes
 
