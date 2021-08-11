@@ -6,6 +6,11 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
+            <div class="mb-5">
+                {% if recipes | length == 0 %}
+                <h2 class="text-center">No recipes yet! Start sharing!</h2>
+                {% endif %}
+            </div>
             <div class="d-flex justify-content-center my-3">
                 <a href="{{ url_for('add_recipe') }}" class="btn btn-success">Add Recipe</a>
             </div>
