@@ -20,7 +20,10 @@
     - [Upcoming Features](#upcoming-features)
 3. [Technologies Used](#technologies-used)
     - [Languages Used](#languages-used)
-4. [Credits](#credits)
+4. [Data Model](#data-model)
+    - [Collections](#collections)
+    - [Indexes](#indexes)
+5. [Credits](#credits)
     - [Code](#code)
     - [Content](#content)
     - [Media](#media)
@@ -102,6 +105,69 @@
 - [CSS3](https://en.wikipedia.org/wiki/CSS)
 - [JavaScript](https://en.wikipedia.org/wiki/JavaScript)
 - [Python](https://en.wikipedia.org/wiki/Python_(programming_language))
+
+## Data Model
+
+- The website uses a [MongoDB](https://www.mongodb.com/) document database with two collections to store recipes and registered users.
+- The username field in the users collection is stored in a session cookie after a successful login. When a recipe is added, the username is stored in the creator field in the recipes collection.
+
+### Collections
+
+- adorePastaDB.recipes
+
+```json
+{
+    "_id": {
+        "$oid": "***"
+    },
+    "name": "Spaghetti Bolognese",
+    "description": "Bolognese sauce is a meat-based sauce in Italian cuisine, typical of the city of Bologna.",
+    "image": "https://i.imgur.com/image.jpg",
+    "type": "Dinner",
+    "time": "30",
+    "serves": "4",
+    "creator": "foody",
+    "ingredients": {
+        "ingredient-1": {
+            "name": "Spaghetti",
+            "quantity": "500",
+            "unit": "g"
+        },
+        "ingredient-2": {
+            "name": "Onions",
+            "quantity": "2",
+            "unit": ""
+        }
+        ...
+    },
+    "method": {
+        "method-1": "Boil water.",
+        "method-2": "Cook pasta.",
+        "method-3": "Slice onions."
+        ...
+    }
+}
+```
+
+- adorePastaDB.users
+
+```json
+{
+    "_id": {
+        "$oid": "***"
+    },
+    "firstname": "foody",
+    "lastname": "harrelson",
+    "username": "foody",
+    "email": "foody@adorepasta.com",
+    "password": "***",
+    "admin": false
+}
+```
+
+### Indexes
+
+- A [wildcard text index](https://docs.mongodb.com/manual/core/index-text/#wildcard-text-indexes) has been created in the recipes collection to support the search function on the website.
 
 ## Credits
 
