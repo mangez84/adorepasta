@@ -23,6 +23,9 @@ mongo = PyMongo(app)
 
 
 def get_creator_details(recipes):
+    """
+    Append user details to each recipe dictionary.
+    """
     for recipe in recipes:
         creator = mongo.db.users.find_one({"username": recipe["creator"]})
         userdata = {
@@ -34,13 +37,15 @@ def get_creator_details(recipes):
 
 
 def get_ingredients(form):
+    """
+    Count the number of ingredients required for the recipe.
+    Build a nested dictionary to store every ingredient.
+    """
     ingredients = {}
     num_ingredients = 0
-    # Check how many ingredients there are in the recipe
     for key in form.to_dict():
         if key.startswith("ingredient"):
             num_ingredients += 1
-    # Build a dictionary for ingredients
     for i in range(1, num_ingredients + 1):
         ingredient = "ingredient-" + str(i)
         quantity = "quantity-" + str(i)
@@ -53,13 +58,15 @@ def get_ingredients(form):
 
 
 def get_method(form):
+    """
+    Count the number of steps required to prepare the recipe.
+    Build a dictionary to store every step.
+    """
     method = {}
     num_steps = 0
-    # Check how many steps there are in the recipe
     for key in form.to_dict():
         if key.startswith("method"):
             num_steps += 1
-    # Build a dictionary for the steps
     for i in range(1, num_steps + 1):
         step = "method-" + str(i)
         method.update({step: form.get(step)})
@@ -68,6 +75,9 @@ def get_method(form):
 
 @app.route("/")
 def home():
+    """
+    Main view that displays a random recipe.
+    """
     recipes = get_creator_details(list(mongo.db.recipes.find()))
     if len(recipes) > 1:
         recipe = random.choice(list(recipes))
@@ -78,6 +88,9 @@ def home():
 
 @app.route("/search", methods=["GET", "POST"])
 def search():
+    """
+    Return recipes that match the search criteria.
+    """
     recipes = get_creator_details(
         list(mongo.db.recipes.find(
             {"$text": {"$search": request.form.get("search")}}))
@@ -87,12 +100,19 @@ def search():
 
 @app.route("/recipes")
 def recipes():
+    """
+    Return all available recipes in the database.
+    """
     recipes = get_creator_details(list(mongo.db.recipes.find()))
     return render_template("recipes.html", recipes=recipes)
 
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    """
+    Ensure that unique user accounts are stored in the database.
+    Notify the user to register with another username if the check fails.
+    """
     if request.method == "POST":
         register = {
             "firstname": request.form.get("firstname").lower(),
@@ -105,26 +125,29 @@ def register():
             "admin": False
         }
         account = mongo.db.users.find_one({"username": register["username"]})
-
-        # Ensure that unique accounts are stored in the database
         if account:
             flash(
                 f"The username {register['username']} is already registered."
             )
             flash("Please register with another username.")
             return redirect(url_for("register"))
-
         mongo.db.users.insert_one(register)
         flash(f"Thank you, {register['firstname'].title()}!")
         flash("Log in with your username and password.")
         flash("Welcome!")
         return redirect(url_for("login"))
-
     return render_template("register.html")
 
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    """
+    Check that user credentials are correct, otherwise notify
+    the user to try again.
+    Store the username in a session cookie if credentials are correct.
+    If a user is an administrator, this information is also stored in
+    the session cookie.
+    """
     if request.method == "POST":
         login = {
             "username": request.form.get("username").lower(),
@@ -132,8 +155,6 @@ def login():
         }
         account = mongo.db.users.find_one({"username": login["username"]})
         error = "The username or password is incorrect. Please try again."
-
-        # Check password for existing account
         if account:
             if check_password_hash(account["password"], login["password"]):
                 session["username"] = login["username"]
@@ -150,12 +171,14 @@ def login():
         else:
             flash(error)
             return redirect(url_for("login"))
-
     return render_template("login.html")
 
 
 @app.route("/my_recipes")
 def my_recipes():
+    """
+    Return recipes created by the logged in user.
+    """
     try:
         recipes = get_creator_details(
             list(mongo.db.recipes.find({"creator": session["username"]}))
@@ -167,6 +190,11 @@ def my_recipes():
 
 @app.route("/add_recipe", methods=["GET", "POST"])
 def add_recipe():
+    """
+    Use helper functions and create a dictionary that contains the recipe
+    details.
+    Insert the new recipe into the database.
+    """
     if request.method == "POST":
         try:
             if session["username"]:
@@ -188,7 +216,6 @@ def add_recipe():
                 return redirect(url_for("my_recipes"))
         except KeyError:
             return redirect(url_for("login"))
-    # Check if session cookie is valid otherwise redirect to login
     try:
         if session["username"]:
             return render_template("add_recipe.html")
@@ -198,6 +225,10 @@ def add_recipe():
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
+    """
+    Retrieve the recipe from the database and make sure that only the logged in
+    user or administrators can edit the recipe.
+    """
     if request.method == "POST":
         recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
         try:
@@ -240,6 +271,11 @@ def edit_recipe(recipe_id):
 
 @app.route("/delete_recipe/<recipe_id>", methods=["GET", "POST"])
 def delete_recipe(recipe_id):
+    """
+    Delete the recipe from the database.
+    Make sure that only the logged in user or administrators can delete
+    the recipe.
+    """
     if request.method == "POST":
         try:
             recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
@@ -271,6 +307,9 @@ def delete_recipe(recipe_id):
 
 @app.route("/logout")
 def logout():
+    """
+    Delete the session cookie and redirect users to the login page.
+    """
     session.pop("username")
     try:
         session.pop("admin")
