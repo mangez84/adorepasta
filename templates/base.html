@@ -17,7 +17,7 @@
 <body>
     <header class="mb-3">
         <!-- The code for the navbar was copied from https://getbootstrap.com/docs/5.0/components/navbar/ -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
+        <nav class="navbar navbar-expand-lg navbar-dark mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{{ url_for('home') }}">Adore Pasta</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -54,7 +54,7 @@
                     <form method="POST" action="{{ url_for('search') }}" class="d-flex">
                         <input id="search" name="search" class="form-control me-2" type="search"
                             placeholder="Search Recipe" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
+                        <button class="btn btn-success" type="submit">Search</button>
                     </form>
                 </div>
             </div>

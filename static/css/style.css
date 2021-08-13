@@ -37,3 +37,23 @@ body {
 .recipe-unit {
     flex: 1 1 5rem
 }
+
+/* Colours */
+
+.navbar {
+    background-color: rgba(206, 43, 55, 1);
+}
+
+footer {
+    background-color: rgba(0, 146, 70, 1);
+}
+
+.btn-success {
+    background-color: rgba(0, 146, 70, 1);
+    border-color: rgba(0, 94, 42, 1);
+}
+
+.btn-danger {
+    background-color: rgba(206, 43, 55, 1);
+    border-color: rgb(143, 31, 38);
+}
