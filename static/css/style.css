@@ -84,7 +84,7 @@ input {
 }
 
 label {
-    font-weight: 600;
+    font-weight: 700;
 }
 
 footer {
@@ -94,30 +94,6 @@ footer {
 footer p {
     color: rgba(255, 255, 255, 1);
     font-weight: 700;
-}
-
-.ingredient-details > div,
-.method > div,
-.recipe-name,
-.recipe-description,
-.recipe-image,
-.recipe-type,
-.recipe-time,
-.recipe-serves {
-    background-color: #198754;
-    border: 2px solid #13633d;
-    padding: 0.8em;
-}
-
-.ingredient-details>div label,
-.method>div label,
-.recipe-name label,
-.recipe-description label,
-.recipe-image label,
-.recipe-type label,
-.recipe-time label,
-.recipe-serves label {
-    color: rgba(255, 255, 255, 1);
 }
 
 /* Stretch the page to full height  */
