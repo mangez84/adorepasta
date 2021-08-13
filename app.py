@@ -22,6 +22,17 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
+@app.errorhandler(404)
+def page_not_found(e):
+    """
+    Return a custom error page if a HTTP 404 exception is thrown.
+    Code was copied from:
+    https://flask.palletsprojects.com/en/2.0.x/errorhandling/
+    """
+    flash("The page you are looking for does not exist!")
+    return render_template('404.html'), 404
+
+
 def get_creator_details(recipes):
     """
     Append user details to each recipe dictionary.
