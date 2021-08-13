@@ -8,17 +8,17 @@
         <div class="col-12">
             <form method="POST" action="{{ url_for('add_recipe') }}">
                 <!-- Recipe name and description -->
-                <div class="mb-3">
+                <div class="mb-3 recipe-name">
                     <label for="name" class="form-label">Name</label>
                     <input type="text" id="name" name="name" placeholder="Pasta Bolognese" class="form-control"
                         required>
                 </div>
-                <div class="mb-3">
+                <div class="mb-3 recipe-description">
                     <label for="description" class="form-label">Description</label>
                     <input type="text" id="description" name="description"
                         placeholder="Pasta Bolognese is traditional..." class="form-control" required>
                 </div>
-                <div class="mb-3">
+                <div class="mb-3 recipe-image">
                     <label for="image" class="form-label">Image URL</label>
                     <input type="text" id="image" name="image" placeholder="https://i.imgur.com/image.jpg"
                         class="form-control" required>
@@ -43,7 +43,7 @@
                 </div>
                 <!-- Ingredient details -->
                 <div class="ingredient-details">
-                    <div class="mb-3 d-flex flex-wrap border border-3">
+                    <div class="mb-3 d-flex flex-wrap">
                         <div class="mb-3 recipe-ingredient">
                             <label for="ingredient-1" class="form-label">Ingredient 1</label>
                             <input type="text" id="ingredient-1" name="ingredient-1" placeholder="Ingredient 1"
@@ -70,7 +70,7 @@
                 </div>
                 <!-- Method with steps -->
                 <div class="method">
-                    <div class="mb-3 border border-3">
+                    <div class="mb-3">
                         <div class="mb-3 method-step">
                             <label for="method-1" class="form-label">Method - Step 1</label>
                             <input type="text" id="method-1" name="method-1" placeholder="Step 1" class="form-control"

@@ -2,6 +2,10 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Sacramento&display=swap');
 
+.navbar {
+    background-color: #c02f3e;
+}
+
 .navbar a.navbar-brand {
     font-family: 'Sacramento', cursive;
     font-size: 2em;
@@ -11,15 +15,43 @@
 .navbar a.nav-link {
     font-family: 'Nunito', sans-serif;
     font-weight: 800;
-    font-size: 1.2em;
+    font-size: 1.1em;
     color: rgba(255, 255, 255, 1);
     letter-spacing: 2px;
 }
 
 .navbar input,
+.navbar .btn {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 0.9em;
+}
+
 .btn {
     font-family: 'Nunito', sans-serif;
     font-weight: 700;
+}
+
+.btn-success {
+    border-color: #13633d;
+}
+
+.btn-danger {
+    border-color: #be2d3c;
+}
+
+.card .card-header {
+    background-color: #198754;
+}
+
+.card .card-footer {
+    background-color: #c02f3e;
+}
+
+.card .card-header p,
+.card .card-footer p {
+    color: rgba(255, 255, 255, 1);
+    margin: 0;
 }
 
 h1,
@@ -45,9 +77,9 @@ h3 {
 
 p,
 li,
-label {
+label,
+input {
     font-family: 'Nunito', sans-serif;
-    font-weight: 400;
     color: rgba(0, 0, 0, 1);
 }
 
@@ -55,25 +87,37 @@ label {
     font-weight: 600;
 }
 
+footer {
+    background-color: #198754;
+}
+
 footer p {
     color: rgba(255, 255, 255, 1);
     font-weight: 700;
 }
 
-.navbar {
-    background-color: #c02f3e;
-}
-
-footer {
+.ingredient-details > div,
+.method > div,
+.recipe-name,
+.recipe-description,
+.recipe-image,
+.recipe-type,
+.recipe-time,
+.recipe-serves {
     background-color: #198754;
+    border: 2px solid #13633d;
+    padding: 0.8em;
 }
 
-.btn-success {
-    border-color: #13633d;
-}
-
-.btn-danger {
-    border-color: #be2d3c;
+.ingredient-details>div label,
+.method>div label,
+.recipe-name label,
+.recipe-description label,
+.recipe-image label,
+.recipe-type label,
+.recipe-time label,
+.recipe-serves label {
+    color: rgba(255, 255, 255, 1);
 }
 
 /* Stretch the page to full height  */
@@ -93,31 +137,23 @@ body {
     justify-content: space-between;
 }
 
-/* Responsive settings for the login and register form */
+/* Responsive settings for the login, register and recipe forms */
 
 .login-form>form,
 .register-form>form {
     flex: 0 1 25rem;
 }
 
-/* Responsive settings for the recipe form */
-
 .recipe-type,
 .recipe-ingredient,
 .remove-ingredient,
 .remove-step {
-    flex: 1 1 100%
+    flex: 1 1 100%;
 }
 
 .recipe-time,
 .recipe-serves,
 .recipe-quantity,
 .recipe-unit {
-    flex: 1 1 5rem
-}
-
-/* Remove margin for paragraphs in recipe cards */
-
-.card p {
-    margin: 0;
+    flex: 1 1 5rem;
 }
