@@ -27,26 +27,26 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
+                        <li class="nav-item mx-3">
                             <a class="nav-link active" aria-current="page" href="{{ url_for('home') }}">Home</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item mx-3">
                             <a class="nav-link" href="{{ url_for('recipes') }}">Recipes</a>
                         </li>
                         {% if session.username is defined %}
-                        <li class="nav-item">
+                        <li class="nav-item mx-3">
                             <a class="nav-link" href="{{ url_for('my_recipes') }}">
                                 My Recipes
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item mx-3">
                             <a class="nav-link" href="{{ url_for('logout') }}">Log Out</a>
                         </li>
                         {% else %}
-                        <li class="nav-item">
+                        <li class="nav-item mx-3">
                             <a class="nav-link" href="{{ url_for('register') }}">Register</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item mx-3">
                             <a class="nav-link" href="{{ url_for('login') }}">Log In</a>
                         </li>
                         {% endif %}
@@ -93,7 +93,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <p class="text-center">© 2021 Adore Pasta</p>
+                    <p class="text-center my-2">© 2021 Adore Pasta</p>
                 </div>
             </div>
         </div>

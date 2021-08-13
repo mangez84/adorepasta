@@ -1,3 +1,81 @@
+/* Fonts and colours */
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Sacramento&display=swap');
+
+.navbar a.navbar-brand {
+    font-family: 'Sacramento', cursive;
+    font-size: 2em;
+    font-weight: 400;
+}
+
+.navbar a.nav-link {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 1.2em;
+    color: rgba(255, 255, 255, 1);
+    letter-spacing: 2px;
+}
+
+.navbar input,
+.btn {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    color: rgba(0, 0, 0, 1);
+    letter-spacing: 1px;
+}
+
+h1 {
+    font-size: 3em;
+}
+
+h2 {
+    font-size: 1.8em;
+}
+
+h3 {
+    font-size: 1.2em;
+}
+
+p,
+li,
+label {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 1);
+}
+
+label {
+    font-weight: 600;
+}
+
+footer p {
+    color: rgba(255, 255, 255, 1);
+    font-weight: 700;
+}
+
+.navbar {
+    background-color: #c02f3e;
+}
+
+footer {
+    background-color: #198754;
+}
+
+.btn-success {
+    border-color: #13633d;
+}
+
+.btn-danger {
+    border-color: #be2d3c;
+}
+
 /* Stretch the page to full height  */
 
 html,
@@ -17,8 +95,8 @@ body {
 
 /* Responsive settings for the login and register form */
 
-.login-form > form,
-.register-form > form {
+.login-form>form,
+.register-form>form {
     flex: 0 1 25rem;
 }
 
@@ -38,22 +116,8 @@ body {
     flex: 1 1 5rem
 }
 
-/* Colours */
+/* Remove margin for paragraphs in recipe cards */
 
-.navbar {
-    background-color: rgba(206, 43, 55, 1);
-}
-
-footer {
-    background-color: rgba(0, 146, 70, 1);
-}
-
-.btn-success {
-    background-color: rgba(0, 146, 70, 1);
-    border-color: rgba(0, 94, 42, 1);
-}
-
-.btn-danger {
-    background-color: rgba(206, 43, 55, 1);
-    border-color: rgb(143, 31, 38);
+.card p {
+    margin: 0;
 }
