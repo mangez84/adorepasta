@@ -83,9 +83,10 @@ input {
     color: rgba(0, 0, 0, 1);
 }
 
-p.flash-message {
+p.flash-message,
+.welcome-message p {
     font-weight: 700;
-    font-size: 1.5em;
+    font-size: 1.1em;
 }
 
 label {
