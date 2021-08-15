@@ -24,11 +24,28 @@
 4. [Data Model](#data-model)
     - [Collections](#collections)
     - [Indexes](#indexes)
-5. [Credits](#credits)
+5. [Test](#test)
+    - [Validation Services](TEST.md#validation-services)
+        - [W3C Markup Validation Service](TEST.md#w3c-markup-validation-service)
+        - [W3C CSS Validation Service](TEST.md#w3c-css-validation-service)
+        - [JSHint](TEST.md#jshint)
+        - [PEP8 Online](TEST.md#pep8-online)
+    - [Testing User Stories](TEST.md#testing-user-stories)
+        - [Common Users](TEST.md#common-users)
+        - [Unregistered Users](TEST.md#unregistered-users)
+        - [Registered Users](TEST.md#registered-users)
+        - [Administrator Users](TEST.md#administrator-users)
+    - [Further Testing](TEST.md#further-testing)
+    - [Known Bugs](TEST.md#known-bugs)
+        - [Fixed](TEST.md#fixed)
+        - [Unfixed](TEST.md#unfixed)
+6. [Deployment](#deployment)
+7. [Credits](#credits)
     - [Code](#code)
     - [Content](#content)
     - [Media](#media)
         - [Images](#images)
+    - [Acknowledgements](#acknowledgements)
 
 ## UX
 
@@ -96,7 +113,7 @@
 
 ### Upcoming Features
 
-- None at the moment.
+- Statistics on the most common ingredient in the database will be added in a later release.
 
 ## Technologies Used
 
@@ -110,7 +127,7 @@
 ### Frameworks, Libraries and Software Used
 
 - [Flask](https://flask.palletsprojects.com/en/2.0.x/)
-    - The website has been created using the Flask microframework with dependent libraries.
+    - The website has been created using the Flask micro-framework with dependent libraries.
     - Dependent libraries include [Jinja](https://jinja.palletsprojects.com/en/3.0.x/) and [Werkzeug](https://werkzeug.palletsprojects.com/en/2.0.x/).
 - [MongoDB](https://www.mongodb.com/)
     - Recipes and registered users are stored in a MongoDB document database.
@@ -205,6 +222,12 @@
 
 - A [wildcard text index](https://docs.mongodb.com/manual/core/index-text/#wildcard-text-indexes) has been created in the recipes collection to support the search function on the website.
 
+## Test
+
+- Tests performed are documented in [TEST.md](TEST.md).
+
+## Deployment
+
 ## Credits
 
 ### Code
@@ -228,3 +251,5 @@
 - The image for the farfalle with pesto recipe was obtained from [Pexels on Pixabay](https://pixabay.com/photos/pasta-pesto-farfalle-pesto-pasta-1854245/).
 - The image for the spaghetti with tomato sauce recipe was obtained from [RitaE on Pixabay](https://pixabay.com/photos/spaghetti-tomatoes-tomato-sauce-1392266/).
 - The image for the lasagna recipe was obtained from [RitaE on Pixabay](https://pixabay.com/photos/lasagna-cheese-tomatoes-noodles-1900529/).
+
+### Acknowledgements
