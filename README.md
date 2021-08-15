@@ -20,6 +20,7 @@
     - [Upcoming Features](#upcoming-features)
 3. [Technologies Used](#technologies-used)
     - [Languages Used](#languages-used)
+    - [Frameworks, Libraries and Software Used](#frameworks-libraries-and-software-used)
 4. [Data Model](#data-model)
     - [Collections](#collections)
     - [Indexes](#indexes)
@@ -105,6 +106,39 @@
 - [CSS3](https://en.wikipedia.org/wiki/CSS)
 - [JavaScript](https://en.wikipedia.org/wiki/JavaScript)
 - [Python](https://en.wikipedia.org/wiki/Python_(programming_language))
+
+### Frameworks, Libraries and Software Used
+
+- [Flask](https://flask.palletsprojects.com/en/2.0.x/)
+    - The website has been created using the Flask microframework with dependent libraries.
+    - Dependent libraries include [Jinja](https://jinja.palletsprojects.com/en/3.0.x/) and [Werkzeug](https://werkzeug.palletsprojects.com/en/2.0.x/).
+- [MongoDB](https://www.mongodb.com/)
+    - Recipes and registered users are stored in a MongoDB document database.
+- [Flask-PyMongo](https://flask-pymongo.readthedocs.io/en/latest/)
+    - The Flask-PyMongo library is used to interact with the MongoDB document database.
+- [Bootstrap 5.0.2](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
+    - The Bootstrap 5.0.2 framework is widely used in this project.
+    - Code for the grid system, navigation bar, forms and cards have been copied and later modified to suit this project.
+- [jQuery 3.6.0](https://jquery.com/)
+    - jQuery is used for the interactive parts when adding, editing or deleting recipes.
+- [Git](https://git-scm.com/)
+    - Git is used for version control of the code in the project.
+- [Github](https://github.com/)
+    - The files for this project are stored in GitHub.
+- [Gitpod](https://gitpod.io/)
+    - Gitpod has been used as a development environment for this project.
+- [Heroku](https://www.heroku.com/)
+    - The production version of the website is hosted on Heroku.
+- [Balsamiq](https://balsamiq.com/)
+    - Balsamiq was used to create wireframes for this project.
+- [Google Fonts](https://fonts.google.com/)
+    - The fonts used on the website are imported from Google Fonts.
+- [Font Awesome](https://fontawesome.com/)
+    - Icons from Font Awesome can be seen when you add or remove ingredients and steps.
+- [favicon.io](https://favicon.io/)
+    - The favicon used on the website was obtained from [favicon.io](https://favicon.io/).
+- [Chrome DevTools](https://developer.chrome.com/docs/devtools/)
+    - Chrome DevTools was used extensively during the development of the website.
 
 ## Data Model
 
