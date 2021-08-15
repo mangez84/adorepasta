@@ -75,7 +75,6 @@ $(".add-step > button").click(function (event) {
     event.preventDefault();
     let method = $(".method").children().first().clone();
     method.find(".method-step input").val("");
-    console.log(method);
     $(".method").append(method);
     modifyAttributes();
 });
@@ -99,7 +98,7 @@ Function to confirm removal of a recipe
 
 $("button.delete-recipe").click(function (event) {
     event.preventDefault();
-    let cancelButton = '<button type="button" class="btn btn-warning delete-cancel mx-3 my-1">Cancel</button>';
+    let cancelButton = '<button type="button" class="btn btn-success delete-cancel mx-3 my-1">Cancel</button>';
     $(this).parent().siblings().remove();
     $(this).parent().parent().prepend(cancelButton);
     $("button.delete-cancel").click(function () {

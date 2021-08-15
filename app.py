@@ -22,6 +22,17 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
+@app.errorhandler(500)
+def internal_server_error(e):
+    """
+    Return a custom error page if a HTTP 500 exception is thrown.
+    Code was copied from:
+    https://flask.palletsprojects.com/en/2.0.x/errorhandling/
+    """
+    flash("We apologize, something went wrong!")
+    return render_template('error.html'), 500
+
+
 @app.errorhandler(404)
 def page_not_found(e):
     """
@@ -30,7 +41,7 @@ def page_not_found(e):
     https://flask.palletsprojects.com/en/2.0.x/errorhandling/
     """
     flash("The page you are looking for does not exist!")
-    return render_template('404.html'), 404
+    return render_template('error.html'), 404
 
 
 def get_creator_details(recipes):
@@ -88,13 +99,19 @@ def get_method(form):
 def home():
     """
     Main view that displays a random recipe.
+    Basic statistics on the number of users and recipes are also displayed.
     """
     recipes = get_creator_details(list(mongo.db.recipes.find()))
     if len(recipes) > 1:
         recipe = random.choice(list(recipes))
     else:
         recipe = None
-    return render_template("home.html", recipe=recipe)
+    recipe_count = len(recipes)
+    user_count = len(list(mongo.db.users.find()))
+    return render_template(
+        "home.html", recipe=recipe, recipe_count=recipe_count,
+        user_count=user_count
+    )
 
 
 @app.route("/search", methods=["GET", "POST"])
@@ -334,4 +351,4 @@ def logout():
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
-            debug=True)
+            debug=False)
