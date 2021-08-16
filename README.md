@@ -101,15 +101,46 @@
 ### Existing Features
 
 - Users can view all recipes without being logged in.
+
+    ![View Recipes](static/images/recipes.png)
+
 - Users can search for recipes without being logged in.
+
+    ![Search Recipes](static/images/search.png)
+
 - Users can register an account and log in.
+
+    ![Register](static/images/register.png)
+    ![Log In](static/images/login.png)
+
 - Links for logging in and out are clearly visible on the website.
+
+    ![Navbar Log In](static/images/navbar-login.png)
+    ![Navbar Register](static/images/navbar-logout.png)
+
 - Registered users have access to a page where their own recipes are displayed.
+
+    ![My Recipes](static/images/my-recipes.png)
+
 - A registered user can add, edit and delete their own recipes.
+
+    ![My Recipes CRUD](static/images/my-recipes-crud.png)
+
 - A confirmation from the user is required to delete a recipe.
+
+    ![My Recipes Delete Confirm](static/images/my-recipes-del-confirm.png)
+
 - Statistics about the recipes are displayed on the home page when a user is logged in.
+
+    ![Statistics](static/images/statistics.png)
+
 - An administrator user can delete recipes created by other users.
+
+    ![Admin Edit Delete](static/images/admin-edit-delete.png)
+
 - The website is easy to use, nice to look at and works well on many device types.
+
+    ![Responsive](static/images/responsive.png)
 
 ### Upcoming Features
 
