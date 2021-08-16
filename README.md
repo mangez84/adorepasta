@@ -14,6 +14,8 @@
         - [Administrator User Goals](#administrator-user-goals)
     - [Developer And Business Goals](#developer-and-business-goals)
     - [Design](#design)
+        - [Colours](#colours)
+        - [Fonts](#fonts)
     - [Wireframes](#wireframes)
 2. [Features](#features)
     - [Existing Features](#existing-features)
@@ -84,6 +86,15 @@
 
 ### Design
 
+#### Colours
+
+- The colors on the website are inspired by the Italian flag. The Italian theme fits well as the website is about pasta dishes.
+
+#### Fonts
+
+- The Sacramento font is used for the site logo in the upper left corner. The font is cursive and is meant to give a welcoming feeling when you enter the website.
+- The Nunito font is used for navigation links, headings, buttons and text content. The font is easy to read and gives a playful impression.
+
 ### Wireframes
 
 - [Home](static/wireframes/home.pdf)
@@ -145,6 +156,7 @@
 ### Upcoming Features
 
 - Statistics on the most common ingredient in the database will be added in a later release.
+- A dialog box to confirm logout will be added in a later release.
 
 ## Technologies Used
 
