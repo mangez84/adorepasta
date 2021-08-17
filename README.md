@@ -136,6 +136,8 @@
 - A registered user can add, edit and delete their own recipes.
 
     ![My Recipes CRUD](static/images/my-recipes-crud.png)
+    ![My Recipes Add](static/images/my-recipes-add.png)
+    ![My Recipes Edit](static/images/my-recipes-edit.png)
 
 - A confirmation from the user is required to delete a recipe.
 
