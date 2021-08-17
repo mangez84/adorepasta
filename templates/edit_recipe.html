@@ -6,6 +6,9 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-12 edit-recipe">
+            <div class="mb-3">
+                <h2 class="text-center">Enter recipe details</h2>
+            </div>
             <form method="POST" action="{{ url_for('edit_recipe', recipe_id=recipe._id) }}">
                 <!-- Recipe name and description -->
                 <div class="mb-3 recipe-name">
