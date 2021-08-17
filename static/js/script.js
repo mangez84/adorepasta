@@ -1,4 +1,4 @@
-/* 
+/*
 The attributes for, id and name should be unique
 */
 
