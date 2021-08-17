@@ -1,5 +1,7 @@
 # Adore Pasta
 
+![Adore Pasta](static/images/adorepasta.png)
+
 [Adore Pasta](https://adorepasta.herokuapp.com/) is a platform for pasta lovers to find and share delicious pasta recipes.
 
 [Create an account](https://adorepasta.herokuapp.com/register), log in and share your pasta knowledge with the world!
@@ -272,6 +274,93 @@
 
 ## Deployment
 
+### Heroku
+
+Adore Pasta was deployed to Heroku using the following procedure.
+
+- Log into [Heroku](https://www.heroku.com/) and click on the **New** button and choose **Create new app**.
+- Choose a name and region for the app and click **Create app**.
+- Create a file with a list of dependencies that must be installed for the application to run properly:
+    ```
+    pip3 freeze --local > requirements.txt
+    ```
+- Create a file named Procfile with the following content:
+    ```
+    web: python app.py
+    ```
+- In Heroku click on **Settings** and then **Reveal Config Vars**.
+- Add names and values for environment variables.
+    - Required environment variables:
+    ```
+    IP
+    MONGO_DBNAME
+    MONGO_URI
+    PORT
+    SECRET_KEY
+    ```
+- Click on **Deploy** in the navigation bar. Choose [Github](https://github.com/) next to **Deployment method**.
+- Next to **Connect to GitHub** search for your [repository](https://github.com/mangez84/adorepasta) and click **Connect**.
+- In the **Automatic deploys** section choose a branch and click on **Enable Automatic Deploys**.
+- In a little while, the [application](http://adorepasta.herokuapp.com/) will be available on Heroku.
+
+### Fork the GitHub Repository
+
+To make a **fork** of this repository to your own account use the following procedure.
+
+- Log into your [GitHub](https://github.com/) account and browse to [this repository](https://github.com/mangez84/adorepasta).
+- Locate the **Fork** button in the upper right corner and click it.
+- You should now have a copy of the repository in your own account.
+
+### Clone the GitHub Repository
+
+To make a **clone** of this repository use the following procedure.
+
+- Log into your [GitHub](https://github.com/) account and browse to the [repository](https://github.com/mangez84/adorepasta).
+- Locate the **Code** button and click it.
+- Choose **Download ZIP** from the dropdown menu to download the project as a compressed file or copy the **HTTPS** link.
+- If you copied the HTTPS link open a terminal with access to [`git`](https://git-scm.com/).
+- Navigate to or create a desired working directory for the project.
+- Type **git clone** followed by the HTTPS link you copied.
+
+    ```
+    git clone https://github.com/mangez84/adorepasta
+    ```
+
+- Press Enter and a local clone will be created in your current working directory.
+
+### Run the Application Locally
+
+After cloning the repository use the following procedure to run the application locally.
+
+- Change directory to adorepasta
+
+    ```
+    cd adorepasta
+    ```
+
+- Use pip to install dependencies.
+
+    ```
+    pip install -r requirements.txt
+    ```
+
+- Create a file named env.py and configure environment variables.
+    - Required environment variables:
+
+    ```
+    IP
+    MONGO_DBNAME
+    MONGO_URI
+    PORT
+    SECRET_KEY
+    ```
+
+- Run the application.
+
+    ```
+    python app.py
+    ```
+
 ## Credits
 
 ### Code
@@ -297,3 +386,5 @@
 - The image for the lasagna recipe was obtained from [RitaE on Pixabay](https://pixabay.com/photos/lasagna-cheese-tomatoes-noodles-1900529/).
 
 ### Acknowledgements
+
+- My Code Institute mentor Gerard McBride for valuable tips and feedback.
