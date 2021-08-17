@@ -39,7 +39,6 @@
         - [Administrator Users](TEST.md#administrator-users)
     - [Further Testing](TEST.md#further-testing)
     - [Known Bugs](TEST.md#known-bugs)
-        - [Fixed](TEST.md#fixed)
         - [Unfixed](TEST.md#unfixed)
 6. [Deployment](#deployment)
 7. [Credits](#credits)

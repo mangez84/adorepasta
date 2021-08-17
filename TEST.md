@@ -15,7 +15,6 @@
         - [Administrator Users](#administrator-users)
     - [Further Testing](#further-testing)
     - [Known Bugs](#known-bugs)
-        - [Fixed](#fixed)
         - [Unfixed](#unfixed)
 
 ## Test
@@ -59,10 +58,13 @@
 
 ### Further Testing
 
+- Testing of the website has been performed with Google Chrome, Microsoft Edge and Mozilla Firefox.
+- With the exception of a [bug](#unfixed) that appears in Mozilla Firefox, the website behaves similarly in all of the above mentioned browsers.
+
 ### Known Bugs
 
-#### Fixed
-
 #### Unfixed
+
+- When input fields that contain numbers are focused in Firefox, the values change if you try to scroll up or down the page.
 
 Back to main [README](README.md) file.
