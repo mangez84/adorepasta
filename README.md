@@ -372,7 +372,12 @@ After cloning the repository use the following procedure to run the application 
 
 - The description for the spaghetti bolognese recipe was copied from [from Wikipedia](https://en.wikipedia.org/wiki/Bolognese_sauce).
 - The description for the spaghetti carbonara recipe was copied from [from Wikipedia](https://en.wikipedia.org/wiki/Carbonara).
-- The recipes are otherwise created by the developer himself.
+- The spaghetti bolognese recipe was copied from [BBC Food](https://www.bbc.co.uk/food/recipes/easy_spaghetti_bolognese_93639).
+- The spaghetti carbonara recipe was copied from [Jamie Oliver's](https://www.jamieoliver.com/recipes/pasta-recipes/easy-carbonara/) website.
+- The garlic shrimp pasta recipe was copied from [tasty.co](https://tasty.co/recipe/one-pot-lemon-garlic-shrimp-pasta).
+- The pesto pasta recipe was copied from [BBC goodfood](https://www.bbcgoodfood.com/recipes/easy-pesto-pasta).
+- The tomato spaghetti recipe was copied from [Jamie Oliver's](https://www.jamieoliver.com/recipes/pasta-recipes/classic-tomato-spaghetti/) website.
+- The lasagne recipe was copied from [BBC goodfood](https://www.bbcgoodfood.com/recipes/classic-lasagne-0).
 
 ### Media
 
@@ -380,10 +385,10 @@ After cloning the repository use the following procedure to run the application 
 
 - The image for the spaghetti bolognese recipe was obtained from [RitaE on Pixabay](https://pixabay.com/photos/spaghetti-noodles-bolognese-1987454/).
 - The image for the spaghetti carbonara recipe was obtained from [Hans Braxmeier on Pixabay](https://pixabay.com/photos/spaghetti-spaghetti-carbonara-7113/).
-- The image for the spaghetti with shrimps recipe was obtained from [RitaE on Pixabay](https://pixabay.com/photos/pasta-italian-cuisine-dish-3547078/).
-- The image for the farfalle with pesto recipe was obtained from [Pexels on Pixabay](https://pixabay.com/photos/pasta-pesto-farfalle-pesto-pasta-1854245/).
-- The image for the spaghetti with tomato sauce recipe was obtained from [RitaE on Pixabay](https://pixabay.com/photos/spaghetti-tomatoes-tomato-sauce-1392266/).
-- The image for the lasagna recipe was obtained from [RitaE on Pixabay](https://pixabay.com/photos/lasagna-cheese-tomatoes-noodles-1900529/).
+- The image for the garlic shrimp pasta recipe was obtained from [RitaE on Pixabay](https://pixabay.com/photos/pasta-italian-cuisine-dish-3547078/).
+- The image for the pesto pasta recipe was obtained from [Pexels on Pixabay](https://pixabay.com/photos/pasta-pesto-farfalle-pesto-pasta-1854245/).
+- The image for the tomato spaghetti recipe was obtained from [RitaE on Pixabay](https://pixabay.com/photos/spaghetti-tomatoes-tomato-sauce-1392266/).
+- The image for the lasagne recipe was obtained from [RitaE on Pixabay](https://pixabay.com/photos/lasagna-cheese-tomatoes-noodles-1900529/).
 
 ### Acknowledgements
 
