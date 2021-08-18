@@ -36,7 +36,7 @@ function modifyAttributes() {
     });
     $(".method input").each(function (index) {
         numSteps = index + 1;
-        $(this).attr("id", "method-" + numSteps).attr("name", "method-" + numSteps).attr("placeholder", "Step" + numSteps);
+        $(this).attr("id", "method-" + numSteps).attr("name", "method-" + numSteps).attr("placeholder", "Step " + numSteps);
     });
 }
 
