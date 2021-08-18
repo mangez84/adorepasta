@@ -143,3 +143,9 @@ body {
 .recipe-unit {
     flex: 1 1 5rem;
 }
+
+/* Add bottom margin for list items in ordered lists */
+
+ol li {
+    margin-bottom: 1rem;
+}
